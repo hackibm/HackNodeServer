@@ -1,0 +1,1 @@
+!function(e){function t(n){if(r[n])return r[n].exports;var u=r[n]={exports:{},id:n,loaded:!1};return e[n].call(u.exports,u,u.exports,t),u.loaded=!0,u.exports}var r={};return t.m=e,t.c=r,t.p="",t(0)}([function(e,t){"use strict";ReactDOM.render(React.createElement("h1",null,"Dane z urzedu"),document.getElementById("sampleQueueView"))}]);
