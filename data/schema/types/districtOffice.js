@@ -7,6 +7,7 @@ const {
 } = require('graphql');
 
 const GroupType = require('./group');
+const ContactInfoType = require('./contactInfo');
 
 module.exports = new GraphQLObjectType({
   name: 'DistrictOfficeType',
@@ -14,7 +15,19 @@ module.exports = new GraphQLObjectType({
   fields: {
     id: {type: GraphQLID},
     name: { type: new GraphQLNonNull(GraphQLString)},
-    email: { type: GraphQLString},
+    contactInfo: {
+      type: ContactInfoType,
+      resolve: () => {
+        //call local db
+
+        return {
+          address: "KEN 15, Warszawa",
+          openingHours: "8-16",
+          email: "ursynow@um.warszawa.pl",
+          phone: "22-366-12-34"
+        }
+      }
+    },
     groups: {
       type: new GraphQLList(GroupType),
       resolve: () => {

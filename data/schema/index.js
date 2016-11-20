@@ -23,7 +23,6 @@ const RootQueryType = new GraphQLObjectType({
         return {
           id: 42,
           name: 'Ursynów',
-          email: 'ursynow@um.warszawa.pl'
 
         };
       }
