@@ -18,6 +18,15 @@ var app = express();
 // serve the files out of ./public as our main files
 app.use(express.static(__dirname + '/public'));
 
+//configuration of graphql endpoint
+const ncSchema = require('./data/schema');
+const graphqlHTTP = require('express-graphql');
+
+app.use('/graphql',graphqlHTTP({
+  schema: ncSchema,
+  graphiql: true
+}));
+
 // get the app environment from Cloud Foundry
 var appEnv = cfenv.getAppEnv();
 
