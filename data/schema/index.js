@@ -1,11 +1,11 @@
-const {
+import {
   GraphQLSchema,
   GraphQLObjectType,
   GraphQLString,
   GraphQLNonNull
-} = require('graphql');
+} from 'graphql';
 
-const DistrictOfficeType = require('./types/districtOffice');
+import DistrictOfficeType from './types/districtOffice';
 
 const RootQueryType = new GraphQLObjectType({
   name: 'RootQueryType',
