@@ -2,7 +2,7 @@ var path = require('path');
 var webpack = require('webpack');
 
 var BUILD_DIR = path.resolve(__dirname, 'public')
-var APP_DIR = path.resolve(__dirname, 'public')
+var APP_DIR = path.resolve(__dirname, 'components')
 
 var config = {
   entry : APP_DIR + "/script.jsx",
@@ -13,9 +13,10 @@ var config = {
   module : {
     loaders : [
       {
-        test : /\.jsx?/,
+        test : /\.jsx?/, exclude: /node_modules/,
         include : APP_DIR,
-        loader : 'babel-loader'
+        loader : 'babel-loader',
+        query: {presets: ['react','es2015']}
       }
     ]
   }

@@ -6,7 +6,7 @@ export default class DistrictOffice extends React.Component {
   constructor(props) {
     super(props);
 	this.state = {
-      districtName: "Ursynów"
+      districtName: "UrsynÃ³w"
     };
   }
 
