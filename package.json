@@ -5,7 +5,8 @@
   "scripts": {
     "start": "./node_modules/.bin/babel-node --presets react,es2015 server.js",
     "dev": "webpack -d --watch",
-    "build": "webpack -p"
+    "build": "webpack -p",
+	"test": "jest"
   },
   "dependencies": {
     "babel-cli": "^6.18.0",
@@ -24,6 +25,25 @@
   "engines": {
     "node": "4.x",
     "npm": "3.x"
+  },
+  "jest": {
+    "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
+    "unmockedModulePathPatterns": [
+      "react",
+      "react-dom",
+      "react-addons-test-utils",
+      "fbjs",
+      "enzyme",
+      "cheerio",
+      "htmlparser2",
+      "underscore",
+      "lodash",
+      "domhandler",
+      "object.assign",
+      "define-properties",
+      "function-bind",
+      "object-keys"
+    ]
   },
   "devDependencies": {
     "babel-eslint": "4.1.6",
