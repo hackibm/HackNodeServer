@@ -19,7 +19,10 @@
     "express-graphql": "^0.6.1",
     "graphql": "^0.8.2",
     "react": "^15.2.1",
-    "react-dom": "^15.2.1"
+    "react-dom": "^15.2.1",
+	"enzyme": "^2.6.0",
+	"jest-cli": "^17.0.3",
+    "react-addons-test-utils": "^15.4.0"
   },
   "repository": {},
   "engines": {
@@ -48,14 +51,9 @@
   "devDependencies": {
     "babel-eslint": "4.1.6",
     "babel-register": "^6.18.0",
-    "enzyme": "^2.6.0",
     "eslint": "^1.10.3",
     "eslint-config-airbnb": "2.1.1",
     "eslint-plugin-react": "3.12.0",
-    "jest-cli": "^17.0.3",
-    "react": "^15.4.0",
-    "react-addons-test-utils": "^15.4.0",
-    "react-dom": "^15.4.0",
     "webpack": "^1.12.12"
   }
 }
