@@ -22,7 +22,8 @@
   },
   "repository": {},
   "engines": {
-    "node": "4.x"
+    "node": "4.x",
+    "npm": "3.x"
   },
   "devDependencies": {
     "babel-eslint": "4.1.6",
