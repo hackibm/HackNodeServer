@@ -6,7 +6,7 @@
     "start": "./node_modules/.bin/babel-node --presets react,es2015 server.js",
     "dev": "webpack -d --watch",
     "build": "webpack -p",
-    "test": "jest"
+    "test": "./node_modules/.bin/jest"
   },
   "dependencies": {
     "babel-cli": "^6.18.0",
