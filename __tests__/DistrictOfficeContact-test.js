@@ -1,4 +1,3 @@
-import jest from 'jest';
 
 jest.dontMock('../components/DistrictOfficeContact.jsx');
 
