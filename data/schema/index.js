@@ -2,6 +2,7 @@ import {
   GraphQLSchema,
   GraphQLObjectType,
   GraphQLString,
+  GraphQLList,
   GraphQLNonNull
 } from 'graphql';
 
@@ -11,20 +12,27 @@ const RootQueryType = new GraphQLObjectType({
   name: 'RootQueryType',
 
   fields : {
-    office: {
-      type: DistrictOfficeType,
+    offices: {
+      type: new GraphQLList(DistrictOfficeType),
       args: {
-        id: { type: new GraphQLNonNull(GraphQLString) }
+        id: { type: GraphQLString }
       },
-      description: 'District office identified by id field',
-      resolve: () => {
+      description: 'District offices optionaly identified by id field',
+      resolve: (_, {id}) => {
         //call our db to resolve id
+        if (id != null) {
+          return [
+            { id: 42,
+            name: 'Ursynów'}] ;
+        } else {
+          return [
+            { id: 41,
+            name: 'Wola'},
+            { id: 42,
+            name: 'Ursynów'}] ;
+        }
 
-        return {
-          id: 42,
-          name: 'Ursynów',
 
-        };
       }
     }
   }

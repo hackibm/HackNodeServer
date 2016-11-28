@@ -13,15 +13,17 @@ import express from 'express';
 // for more info, see: https://www.npmjs.com/package/cfenv
 import cfenv from 'cfenv';
 
+//configuration of graphql endpoint
+import ncSchema from './data/schema';
+import graphqlHTTP from 'express-graphql';
+
+
 // create a new express server
 var app = express();
 
 // serve the files out of ./public as our main files
 app.use(express.static(__dirname + '/public'));
 
-//configuration of graphql endpoint
-const ncSchema = require('./data/schema');
-const graphqlHTTP = require('express-graphql');
 
 app.use('/graphql',graphqlHTTP({
   schema: ncSchema,
