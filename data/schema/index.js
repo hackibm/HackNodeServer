@@ -3,7 +3,6 @@ import {
   GraphQLObjectType,
   GraphQLString,
   GraphQLList,
-  GraphQLNonNull
 } from 'graphql';
 
 import DistrictOfficeType from './types/districtOffice';
@@ -11,35 +10,34 @@ import DistrictOfficeType from './types/districtOffice';
 const RootQueryType = new GraphQLObjectType({
   name: 'RootQueryType',
 
-  fields : {
+  fields: {
     offices: {
       type: new GraphQLList(DistrictOfficeType),
       args: {
-        id: { type: GraphQLString }
+        id: { type: GraphQLString },
       },
       description: 'District offices optionaly identified by id field',
-      resolve: (_, {id}) => {
-        //call our db to resolve id
-        if (id != null) {
-          return [
+      resolve: (_, { id }) => {
+        // call our db to resolve id
+        let retObj;
+        if (id !== null) {
+          retObj = [
             { id: 42,
-            name: 'Ursynów'}] ;
+            name: 'Ursynów' }];
         } else {
-          return [
+          retObj = [
             { id: 41,
-            name: 'Wola'},
+            name: 'Wola' },
             { id: 42,
-            name: 'Ursynów'}] ;
-        }
-
-
-      }
-    }
-  }
+            name: 'Ursynów' }];
+        } return retObj;
+      },
+    },
+  },
 });
 
 const ncSchema = new GraphQLSchema({
-  query: RootQueryType
+  query: RootQueryType,
   // mutation:
 });
 

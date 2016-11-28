@@ -6,17 +6,15 @@ export default class DistrictOfficeGroups extends React.Component {
     super(props);
   }
   render() {
+    const groupList = ['gr1', 'gr2', 'gr3', 'gr4'];
+    const groups = [];
 
-    var groupList = ["gr1", "gr2", "gr3", "gr4"];
-    var groups = [];
-
-    for (var i=0; i<groupList.length; i++) {
+    for (let i = 0; i < groupList.length; i++) {
       groups.push(
         <Group />
       );
     }
 
-    return (<div>{groups}</div>)
+    return (<div>{groups}</div>);
   }
-
 }

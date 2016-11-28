@@ -63,10 +63,10 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	//let DistrictOfficeContact = require('./DistrictOfficeContact.jsx');
-	//let Group = require('./Group.jsx');
-	//let DistrictOfficeGroups = require('./DistrictOfficeGroups.jsx');
-	//let DistrictOffice = require('./DistrictOffice.jsx');
+	// let DistrictOfficeContact = require('./DistrictOfficeContact.jsx');
+	// let Group = require('./Group.jsx');
+	// let DistrictOfficeGroups = require('./DistrictOfficeGroups.jsx');
+	// let DistrictOffice = require('./DistrictOffice.jsx');
 	
 	_reactDom2.default.render(_react2.default.createElement(_DistrictOffice2.default, null), document.getElementById('sampleQueueView'));
 
@@ -22052,7 +22052,7 @@
 	    var _this = _possibleConstructorReturn(this, (DistrictOffice.__proto__ || Object.getPrototypeOf(DistrictOffice)).call(this, props));
 	
 	    _this.state = {
-	      districtName: "Ursynów"
+	      districtName: 'Ursynów'
 	    };
 	    return _this;
 	  }
@@ -22123,8 +22123,7 @@
 	  _createClass(DistrictOfficeGroups, [{
 	    key: 'render',
 	    value: function render() {
-	
-	      var groupList = ["gr1", "gr2", "gr3", "gr4"];
+	      var groupList = ['gr1', 'gr2', 'gr3', 'gr4'];
 	      var groups = [];
 	
 	      for (var i = 0; i < groupList.length; i++) {
@@ -22183,7 +22182,6 @@
 	  _createClass(Group, [{
 	    key: 'render',
 	    value: function render() {
-	
 	      return _react2.default.createElement(
 	        'div',
 	        null,

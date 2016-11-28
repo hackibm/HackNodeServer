@@ -1,10 +1,7 @@
-const {
+import {
   GraphQLObjectType,
   GraphQLString,
-  GraphQLID,
-  GraphQLNonNull,
-  GraphQLList
-} = require('graphql');
+} from 'graphql';
 
 module.exports = new GraphQLObjectType({
   name: 'ContactInfoType',
@@ -12,8 +9,7 @@ module.exports = new GraphQLObjectType({
     address: { type: GraphQLString },
     phone: { type: GraphQLString },
     email: { type: GraphQLString },
-    openingHours: { type: GraphQLString }
-  }
-
+    openingHours: { type: GraphQLString },
+  },
 
 });
