@@ -1,22 +1,21 @@
 import React from 'react';
-import DistrictOfficeGroups from './DistrictOfficeGroups.jsx';
-import DistrictOfficeContact from './DistrictOfficeContact.jsx';
+import { Link } from 'react-router';
 
 export default class DistrictOffice extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      districtName: 'Ursynów',
+      name: 'Wola',
     };
   }
 
 
    render() {
+     const districtName = this.props.name;
+     const linkTo = "contact/"+this.props.name;
      return (<div id="district">
-              <h2>Urzad dzielnicy {this.state.districtName}</h2>
-              <DistrictOfficeContact districtName={this.state.districtName}/>
-              <DistrictOfficeGroups/>
-            </div>);
+              <ul><Link to={`${linkTo}`} >{districtName}</Link></ul>
+            </div>)
    }
 
 }

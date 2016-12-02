@@ -23,7 +23,9 @@ const RootQueryType = new GraphQLObjectType({
         if (id !== null) {
           retObj = [
             { id: 42,
-            name: 'Ursynów' }];
+            name: 'Ursynów' },
+            { id: 41,
+            name: 'Wola' }];
         } else {
           retObj = [
             { id: 41,
