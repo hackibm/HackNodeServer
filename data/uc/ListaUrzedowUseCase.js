@@ -1,9 +1,14 @@
+import { initCloudant } from '../../data/cloudant/CloudantService';
+
 class ListaUrzedowUseCase {
 
-  getUmList() {
-    const list = ['Urząd Wola'];
+  constructor() {
+    this.db = initCloudant('um');
+    console.log('konstruktor');
+  }
 
-    return list;
+  getUmList() {
+    return this.db.find({ 'selector': {} });
   }
 }
 
