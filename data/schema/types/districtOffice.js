@@ -21,10 +21,10 @@ module.exports = new GraphQLObjectType({
     },
     groups: {
       type: new GraphQLList(GroupType),
-      resolve: () => {
+      resolve: (parent) => {
         // call um data api
         return new Promise(function (resolve, reject) {
-          ListaOkienekUseCase.getGroupList('831ef31a-b2a3-4cbb-aaa5-cb90fe05ad8c', resolve);
+          ListaOkienekUseCase.getGroupList(parent.id, resolve);
         });
       },
     },
