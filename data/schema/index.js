@@ -20,12 +20,9 @@ const RootQueryType = new GraphQLObjectType({
       description: 'District offices optionaly identified by id field',
       resolve: (_, { id }) => {
          // call our db to resolve id
-        const promise = ListaUrzedowUseCase.getUmList();
-
-        promise.then((result) => {
-           console.log('result ewa:' + result.docs);
-           return result.docs;
-        }).catch(e => console.log('ERROR: ' + e));
+         return new Promise(function (resolve, reject) {
+           ListaUrzedowUseCase.getUmList(resolve);
+         });
       },
     },
   },

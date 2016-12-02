@@ -7,11 +7,25 @@ class ListaUrzedowUseCase {
     console.log('konstruktor');
   }
 
-  getUmList() {
-    return this.db.find({ 'selector': {} });
+  getUmList(callback) {
+    this.db.find({ 'selector': {} }, (err, result) => {
+      // przetwarzanie
+      const urzedy = [];
+      result.docs.forEach(urzad => {
+        urzedy.push({
+          id: urzad._id,
+          name: urzad.name,
+          contactInfo: {
+            phone: urzad.phone,
+            address: urzad.adres,
+          },
+        });
+      });
+
+      callback(urzedy);
+    });
   }
 }
-
 
 const listaUrzedowUseCase = new ListaUrzedowUseCase();
 

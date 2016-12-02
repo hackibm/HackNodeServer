@@ -19,7 +19,7 @@ export function initCloudant(dbName) {
     dbCredentials.url = urlWithCredentials;
   }
 
-  cloudant = new Cloudant({ url: dbCredentials.url, plugin: 'promises' });
+  cloudant = new Cloudant({ url: dbCredentials.url /* , plugin: 'promises'*/ });
 
   return cloudant.use(dbCredentials.dbName);
 }

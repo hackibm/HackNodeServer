@@ -5,8 +5,7 @@ describe('Baza danych Cloudant', () => {
   const db = initCloudant('um');
 
   it('zawiera dane dla urzedu Zoliborz', () => {
-    const promise = db.find({ 'selector': { 'name': 'Urząd Dzielnicy Wola' } });
-    promise.then((result) => {
+    db.find({ 'selector': { 'name': 'Urząd Dzielnicy Wola' } }, result => {
       expect(result.docs.length).toBe(1);
     });
   });
