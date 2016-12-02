@@ -3,6 +3,6 @@ applications:
   memory: 256M
   instances: 1
   domain: mybluemix.net
-  name: HackNodeServer
-  host: HackNodeServer
+  name: HackNodeApp
+  host: HackNodeApp
   disk_quota: 2048M
