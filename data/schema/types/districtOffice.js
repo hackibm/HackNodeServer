@@ -21,7 +21,7 @@ module.exports = new GraphQLObjectType({
     },
     groups: {
       type: new GraphQLList(GroupType),
-      resolve: (parent) => {
+      resolve: (parent, { id }) => {
         // call um data api
         return new Promise(function (resolve, reject) {
           ListaOkienekUseCase.getGroupList(parent.id, resolve);
