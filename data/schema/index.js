@@ -21,7 +21,7 @@ const RootQueryType = new GraphQLObjectType({
       resolve: (_, { id }) => {
          // call our db to resolve id
          return new Promise(function (resolve, reject) {
-           ListaUrzedowUseCase.getUmList(resolve);
+           ListaUrzedowUseCase.getUmList(id, resolve);
          });
       },
     },
