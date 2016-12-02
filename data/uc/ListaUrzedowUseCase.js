@@ -7,17 +7,28 @@ class ListaUrzedowUseCase {
     console.log('konstruktor');
   }
 
-  getUmList(callback) {
-    this.db.find({ 'selector': {} }, (err, result) => {
+  getUmList(idUrzedu, callback) {
+    let selector;
+
+    if (idUrzedu === '') {
+      selector = { 'selector': {} };
+    } else {
+      selector = { 'selector': { 'wawId': idUrzedu } };
+    }
+
+    this.db.find(selector, (err, result) => {
       // przetwarzanie
       const urzedy = [];
       result.docs.forEach(urzad => {
         urzedy.push({
-          id: urzad._id,
+          id: urzad.wawId,
           name: urzad.name,
           contactInfo: {
             phone: urzad.phone,
             address: urzad.adres,
+            // urzad.latitude,
+            // urzad.longitude,
+            email: urzad.email,
           },
         });
       });
