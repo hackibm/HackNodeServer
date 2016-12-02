@@ -8,6 +8,7 @@ import {
 
 import GroupType from './group';
 import ContactInfoType from './contactInfo';
+import ListaOkienekUseCase from '../../../data/uc/ListaOkienekUseCase.js';
 
 module.exports = new GraphQLObjectType({
   name: 'DistrictOfficeType',
@@ -17,46 +18,14 @@ module.exports = new GraphQLObjectType({
     name: { type: new GraphQLNonNull(GraphQLString) },
     contactInfo: {
       type: ContactInfoType,
-      resolve: () => {
-        // call local db
-
-        return {
-          address: '15, Warszawa',
-          openingHours: '8-16',
-          email: 'ursynow@um.warszawa.pl',
-          phone: '22-366-12-34',
-        };
-      },
     },
     groups: {
       type: new GraphQLList(GroupType),
-      resolve: () => {
+      resolve: (parent, { id }) => {
         // call um data api
-
-        return [
-          {
-            'status': '1',
-            'czasObslugi': '00:04',
-            'lp': '1',
-            'idGrupy': '0',
-            'liczbaCzynnychStan': 3,
-            'nazwaGrupy': 'Meldunki i dowody',
-            'literaGrupy': 'A',
-            'liczbaKlwKolejce': 0,
-            'aktualnyNumer': 89,
-          },
-          {
-            'status': '1',
-            'czasObslugi': '00:04',
-            'lp': '2',
-            'idGrupy': '0',
-            'liczbaCzynnychStan': 1,
-            'nazwaGrupy': 'Wydawanie dowod\u00f3w osobistych',
-            'literaGrupy': 'B',
-            'liczbaKlwKolejce': 0,
-            'aktualnyNumer': 82,
-          },
-        ];
+        return new Promise(function (resolve, reject) {
+          ListaOkienekUseCase.getGroupList(parent.id, resolve);
+        });
       },
     },
   },
