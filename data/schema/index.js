@@ -6,6 +6,7 @@ import {
 } from 'graphql';
 
 import DistrictOfficeType from './types/districtOffice';
+import ListaUrzedowUseCase from '../uc/ListaUrzedowUseCase.js';
 
 const RootQueryType = new GraphQLObjectType({
   name: 'RootQueryType',
@@ -18,19 +19,13 @@ const RootQueryType = new GraphQLObjectType({
       },
       description: 'District offices optionaly identified by id field',
       resolve: (_, { id }) => {
-        // call our db to resolve id
-        let retObj;
-        if (id !== null) {
-          retObj = [
-            { id: 42,
-            name: 'Ursynów' }];
-        } else {
-          retObj = [
-            { id: 41,
-            name: 'Wola' },
-            { id: 42,
-            name: 'Ursynów' }];
-        } return retObj;
+         // call our db to resolve id
+        const promise = ListaUrzedowUseCase.getUmList();
+
+        promise.then((result) => {
+           console.log('result ewa:' + result.docs);
+           return result.docs;
+        }).catch(e => console.log('ERROR: ' + e));
       },
     },
   },
