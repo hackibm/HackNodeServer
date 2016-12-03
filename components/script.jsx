@@ -10,6 +10,6 @@ ReactDOM.render(
   <Router history={hashHistory}>
     <Route path="/" component = {App}>
       <IndexRoute component = {DistrictOfficesList} />
-      <Route path="contact(/:districtName)" name="contact" component = {DistrictOfficeContact}/>
+      <Route path="contact(/:districtId)" name="contact" component = {DistrictOfficeContact}/>
     </Route>
 </Router>, app);

@@ -7,12 +7,12 @@ import { shallow } from 'enzyme';
 
 describe('DistrictOffice', () => {
   describe('The DistrictOffice Display', () => {
-    const office = shallow(<DistrictOffice name="Wola"/>);
+    const office = shallow(<DistrictOffice name="Wola" id="41" />);
     it('should be a div', () => {
       expect(office.type()).toBe('div');
     });
    it('should display name', () => {
-     expect(office.find(Link).get(0).props.to).toEqual('contact/Wola');
+     expect(office.find(Link).get(0).props.to).toEqual('contact/41');
   });
  });
 });

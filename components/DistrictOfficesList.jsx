@@ -7,7 +7,7 @@ export default class DistrictOfficesList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      districtOffices: []
+      districtOffices: [],
     };
   }
 
@@ -20,25 +20,24 @@ export default class DistrictOfficesList extends React.Component {
 		  transport: new Transport('http://localhost:6003/graphql')
 		});
 
-		client.query(`
+    client.query(`
 			{
 			  offices{
-			   name,
-			   groups{
-			    nazwaGrupy
-			  }
+        id,
+			  name
 		   }
 			}
 		`).then(result => {
-			console.log(JSON.stringify(result));
-			var districtOffices = result.offices.map((office) => office.name);
-       console.log(districtOffices);
-			this.setState({ districtOffices });
+  console.log(JSON.stringify(result));
+  const districtOffices = result.offices.map(function ( office ) {return { name: office.name, id: office.id} } );
+//  const districtOffices = result.offices.map((office) => office.name);
+  console.log(districtOffices);
+  this.setState({ districtOffices });
 		});
   }
 
    render() {
-     const districtOffices = this.state.districtOffices.map((name, i) => <DistrictOffice key={i} name={name}/>);
+     const districtOffices = this.state.districtOffices.map((office, i) => <DistrictOffice key={i} name={office.name} id={office.id}/>);
      console.log(this.state);
      return (<div id="officesList">
                 <h3>Lista urzędów: </h3>
