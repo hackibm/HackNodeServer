@@ -25,9 +25,9 @@ class ListaUrzedowUseCase {
           name: urzad.name,
           contactInfo: {
             phone: urzad.phone,
-            address: urzad.adres,
-            // urzad.latitude,
-            // urzad.longitude,
+            address: urzad.address,
+            latitude: urzad.latitude,
+            longitude: urzad.longitude,
             email: urzad.email,
           },
         });
