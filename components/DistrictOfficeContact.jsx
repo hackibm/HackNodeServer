@@ -98,8 +98,7 @@ export default class DistrictOfficeContact extends React.Component {
           Dane kontaktowe dla: {this.state.districtOfficeContact.name}<br/></h2>
         <div>
           <span>
-            <strong>Adres:
-            </strong>
+            <strong>Adres: </strong>
           </span>
           <span>
             {contactInfo.address}
@@ -107,16 +106,14 @@ export default class DistrictOfficeContact extends React.Component {
         </div>
         <div>
           <span>
-            <strong>Telefon:
-            </strong>
+            <strong>Telefon: </strong>
           </span>
           <span>
             {contactInfo.phone}</span>
         </div>
         <div>
           <span>
-            <strong>Email:
-            </strong>
+            <strong>Email: </strong>
           </span>
           <span>
             {contactInfo.email}
