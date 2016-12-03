@@ -17,7 +17,7 @@ export default class DistrictOfficesList extends React.Component {
 
   fetchOffices() {
 		const client = new Lokka({
-		  transport: new Transport('http://localhost:6002/graphql')
+		  transport: new Transport('http://localhost:6003/graphql')
 		});
 
 		client.query(`
