@@ -5,6 +5,7 @@
   "scripts": {
     "start": "./node_modules/.bin/babel-node --presets react,es2015 server.js",
     "dev": "webpack -d --watch",
+    "devex": "webpack-dev-server --content-base public --inline --hot",
     "devstart": "nodemon --exec babel-node --presets react,es2015 server.js",
     "build": "webpack -p",
     "test": "./node_modules/.bin/jest",
@@ -13,7 +14,7 @@
   },
   "dependencies": {
     "babel-cli": "^6.18.0",
-    "babel-core": "^6.4.5",
+    "babel-core": "^6.18.2",
     "babel-eslint": "^4.1.6",
     "babel-jest": "^17.0.2",
     "babel-loader": "^6.2.1",
@@ -30,16 +31,19 @@
     "express": "4.13.x",
     "express-graphql": "^0.6.1",
     "graphql": "^0.8.2",
+    "history": "^1.17.0",
     "jest": "^17.0.3",
     "jest-cli": "^17.0.3",
     "json-loader": "^0.5.4",
     "lokka": "^1.7.0",
     "lokka-transport-http": "^1.6.1",
     "node-rest-client": "^2.0.1",
-    "react": "^15.2.1",
+    "react": "^15.4.1",
     "react-addons-test-utils": "^15.4.0",
     "react-dom": "^15.2.1",
-    "webpack": "^1.12.12"
+    "react-router": "^3.0.0",
+    "webpack": "^1.12.12",
+    "webpack-dev-server": "^1.16.2"
   },
   "repository": {},
   "engines": {
@@ -62,6 +66,8 @@
       "object.assign",
       "define-properties",
       "function-bind",
+      "lokka",
+      "lokka-transport-http",
       "object-keys"
     ]
   },

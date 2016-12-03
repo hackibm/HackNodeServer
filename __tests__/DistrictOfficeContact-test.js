@@ -7,13 +7,16 @@ import { shallow } from 'enzyme';
 
 describe('DistrictOfficeContact', () => {
   describe('The DistrictOfficeContact Display', () => {
-    const contact = shallow(<DistrictOfficeContact districtName="Wola"/>);
+    const params = {
+      districtName: 'Wola',
+    };
+    const contact = shallow(<DistrictOfficeContact params={params} />);
     it('should be a div', () => {
       expect(contact.type()).toBe('div');
     });
 
     it('should display suitable text', () => {
-      expect(contact.find('div').text()).toEqual('Dane kontaktowe dla: Wola');
+      expect(contact.find('div').text()).toContain('Dane kontaktowe dla: Wola');
     });
   });
 });
