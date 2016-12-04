@@ -19,7 +19,6 @@ export default class DistrictOfficeContact extends React.Component {
   componentWillMount() {
     this.fetchContacts(this.props.params.districtId);
     this.fetchGroups(this.props.params.districtId);
-    console.log('componentWillMount');
   }
 
   fetchContacts(id) {
@@ -38,13 +37,10 @@ export default class DistrictOfficeContact extends React.Component {
         }
       }
       `).then(result => {
-      const districtOfficeContact = result.offices.map(function(office) {
-        return {name: office.name, contactInfo: office.contactInfo}
+      const districtOfficeContact = result.offices.map(function (office) {
+        return { name: office.name, contactInfo: office.contactInfo }
       })[0];
-      console.log("odpoeidz" + JSON.stringify(districtOfficeContact));
-
-      this.setState({districtOfficeContact});
-      console.log('zawolal callback');
+      this.setState({ districtOfficeContact });
     });
   }
 
@@ -64,20 +60,27 @@ export default class DistrictOfficeContact extends React.Component {
     }
   }}
       `).then(result => {
-
       const districtOfficeGroups = result.offices[0].groups;
-      console.log("odpoeidz" + JSON.stringify(districtOfficeGroups));
-
-      this.setState({districtOfficeGroups});
-      console.log('zawolal callback');
+      this.setState({ districtOfficeGroups });
     });
   }
 
   render() {
-
-    // const names = this.state.districtOfficeContact.map((office, i) => office.name);
-    console.log("this.state.districtOfficeGroups" + JSON.stringify(this.state.districtOfficeGroups));
-    // const contactInfo = this.state.districtOfficeContact.map((office, i) => office.contactInfo);
+    const buttonStyles = {
+      "border": "none",
+      "text-decoration": "none",
+      "-webkit-border-radius": "20",
+      "-moz-border-radius": "20",
+      "border-radius": "20px",
+      "font-family": "Cambria",
+      "color": "#ffffff",
+      "font-size": "22px",
+      "background": "#89aaff",
+      "padding": "10px 20px 10px 20px",
+      "-webkit-box-shadow": "10px 10px 10px -8px rgba(0,0,0,0.75)",
+      "-moz-box-shadow": "10px 10px 10px -8px rgba(0,0,0,0.75)",
+      "box-shadow": "10px 10px 10px -8px rgba(0,0,0,0.75)"
+    }
     const contactInfo = this.state.districtOfficeContact.contactInfo;
     const groupsInfo = this.state.districtOfficeGroups.map((g, i) => <Group key={i} groupName={g.nazwaGrupy} time={g.liczbaKlwKolejce} count={g.liczbaCzynnychStan}/>);
 
@@ -87,8 +90,7 @@ export default class DistrictOfficeContact extends React.Component {
           Dane kontaktowe dla: {this.state.districtOfficeContact.name}<br/></h2>
         <div>
           <span>
-            <strong>Adres:
-            </strong>
+            <strong>Adres: </strong>
           </span>
           <span>
             {contactInfo.address}
@@ -96,24 +98,21 @@ export default class DistrictOfficeContact extends React.Component {
         </div>
         <div>
           <span>
-            <strong>Telefon:
-            </strong>
+            <strong>Telefon: </strong>
           </span>
           <span>
             {contactInfo.phone}</span>
         </div>
         <div>
           <span>
-            <strong>Email:
-            </strong>
+            <strong>Email: </strong>
           </span>
           <span>
             {contactInfo.email}
           </span>
-        </div>
+        </div><br/><br/>
         <ul>{groupsInfo}</ul>
-
-        <Link to="/">wróć</Link>
+        <Link to="/" style={buttonStyles}>wróć</Link>
       </div>
     );
   }
