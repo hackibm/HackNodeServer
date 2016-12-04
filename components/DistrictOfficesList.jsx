@@ -16,9 +16,7 @@ export default class DistrictOfficesList extends React.Component {
   }
 
   fetchOffices() {
-		const client = new Lokka({
-		  transport: new Transport('http://localhost:6003/graphql')
-		});
+    const client = new Lokka({ transport: new Transport('http://localhost:6003/graphql') });
 
     client.query(`
 			{
@@ -28,21 +26,26 @@ export default class DistrictOfficesList extends React.Component {
 		   }
 			}
 		`).then(result => {
-  console.log(JSON.stringify(result));
-  const districtOffices = result.offices.map(function ( office ) {return { name: office.name, id: office.id} } );
-//  const districtOffices = result.offices.map((office) => office.name);
-  console.log(districtOffices);
-  this.setState({ districtOffices });
-		});
+      console.log(JSON.stringify(result));
+      const districtOffices = result.offices.map(function (office) {
+        return { name: office.name, id: office.id };
+      });
+      //  const districtOffices = result.offices.map((office) => office.name);
+      console.log(districtOffices);
+      this.setState({ districtOffices });
+    });
   }
 
-   render() {
-     const districtOffices = this.state.districtOffices.map((office, i) => <DistrictOffice key={i} name={office.name} id={office.id}/>);
-     console.log(this.state);
-     return (<div id="officesList">
-                <h3>Lista urzędów: </h3>
-                <ul>{districtOffices}</ul>
-            </div>);
-   }
+  render() {
+    const districtOffices = this.state.districtOffices.map((office, i) => <DistrictOffice key={i} name={office.name} id={office.id}/>);
+    console.log(this.state);
+    return (
+      <div id="officesList">
+        <h3>Lista urzędów:
+        </h3>
+        <ul>{districtOffices}</ul>
+      </div>
+    );
+  }
 
 }

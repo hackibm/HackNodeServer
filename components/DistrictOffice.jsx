@@ -9,15 +9,17 @@ export default class DistrictOffice extends React.Component {
     };
   }
 
-
-   render() {
-     const districtName = this.props.name;
-     const districtNameId = this.props.id;
-     console.log("state in District Office: "+this.state.districtOffices);
-     const linkTo = "contact/"+districtNameId;
-     return (<div id="district">
-              <ul><Link to={`${linkTo}`} >{districtName}</Link></ul>
-            </div>)
-   }
+  render() {
+    const districtName = this.props.name;
+    const districtNameId = this.props.id;
+    const linkTo = 'contact/' + districtNameId;
+    return (
+      <div id="district">
+        <ul>
+          <Link to={`${linkTo}`}>{districtName}</Link>
+        </ul>
+      </div>
+    );
+  }
 
 }

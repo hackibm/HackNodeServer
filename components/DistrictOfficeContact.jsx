@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import { Lokka } from 'lokka';
 import { Transport } from 'lokka-transport-http';
-
+import Group from './Group.jsx';
 
 export default class DistrictOfficeContact extends React.Component {
   constructor(props) {
@@ -10,26 +10,22 @@ export default class DistrictOfficeContact extends React.Component {
     this.state = {
       districtOfficeContact: {
         name: '',
-        contactInfo : {
-
-        }
+        contactInfo: {},
       },
+      districtOfficeGroups: [],
     };
   }
 
-
   componentWillMount() {
-       this.fetchContacts(this.props.params.districtId);
-      console.log("componentWillMount");
+    this.fetchContacts(this.props.params.districtId);
+    this.fetchGroups(this.props.params.districtId);
+    console.log('componentWillMount');
   }
 
+  fetchContacts(id) {
+    const client = new Lokka({ transport: new Transport('http://localhost:6003/graphql') });
 
-    fetchContacts(id) {
-      const client = new Lokka({
-        transport: new Transport('http://localhost:6003/graphql')
-      });
-
-      client.query(`{
+    client.query(`{
         offices(id :"${id}"){
           id,
           name,
@@ -42,21 +38,21 @@ export default class DistrictOfficeContact extends React.Component {
         }
       }
       `).then(result => {
-      const districtOfficeContact = result.offices.map(function ( office ) {return { name: office.name, contactInfo: office.contactInfo} } )[0];
-      console.log("odpoeidz"+JSON.stringify(districtOfficeContact));
+      const districtOfficeContact = result.offices.map(function(office) {
+        return {name: office.name, contactInfo: office.contactInfo}
+      })[0];
+      console.log("odpoeidz" + JSON.stringify(districtOfficeContact));
 
       this.setState({districtOfficeContact});
       console.log('zawolal callback');
-      });
-    }
+    });
+  }
 
-    fetchGroups(id) {
-      const client = new Lokka({
-        transport: new Transport('http://localhost:6003/graphql')
-      });
+  fetchGroups(id) {
+    const client = new Lokka({transport: new Transport('http://localhost:6003/graphql')});
 
-      client.query(`{
-  offices(id : "831ef31a-b2a3-4cbb-aaa5-cb90fe05ad8c"){
+    client.query(`{
+  offices(id : "${id}"){
     id,
     name,
     groups{
@@ -66,36 +62,59 @@ export default class DistrictOfficeContact extends React.Component {
       liczbaKlwKolejce,
       aktualnyNumer
     }
-  }
+  }}
       `).then(result => {
-      const districtOfficeContact = result.offices.map(function ( office ) {return { name: office.name, contactInfo: office.contactInfo} } )[0];
-      console.log("odpoeidz"+JSON.stringify(districtOfficeContact));
 
-      this.setState({districtOfficeContact});
+      const districtOfficeGroups = result.offices[0].groups;
+      console.log("odpoeidz" + JSON.stringify(districtOfficeGroups));
+
+      this.setState({districtOfficeGroups});
       console.log('zawolal callback');
-      });
-    }
+    });
+  }
 
+  render() {
 
-   render() {
+    // const names = this.state.districtOfficeContact.map((office, i) => office.name);
+    console.log("this.state.districtOfficeGroups" + JSON.stringify(this.state.districtOfficeGroups));
+    // const contactInfo = this.state.districtOfficeContact.map((office, i) => office.contactInfo);
+    const contactInfo = this.state.districtOfficeContact.contactInfo;
+    const groupsInfo = this.state.districtOfficeGroups.map((g, i) => <Group key={i} groupName={g.nazwaGrupy} time={g.liczbaKlwKolejce} count={g.liczbaCzynnychStan}/>);
 
-// const names = this.state.districtOfficeContact.map((office, i) => office.name);
-// console.log("names"+JSON.stringify(names));
-// const contactInfo = this.state.districtOfficeContact.map((office, i) => office.contactInfo);
-const contactInfo = this.state.districtOfficeContact.contactInfo;
-  console.log("contactInfo"+JSON.stringify(contactInfo));
-    return (<div>
-<h2> Dane kontaktowe dla: {this.state.districtOfficeContact.name}<br/></h2>
- <div><span><strong>Adres: </strong></span> <span>
-   {contactInfo.address}
- </span></div>
- <div><span><strong>Telefon: </strong></span> <span>
-   {contactInfo.phone}</span>
- </div>
-  <div><span><strong>Email: </strong></span> <span>
-   {contactInfo.email}
- </span></div>
-   <Link to="/">wróć</Link>
-  </div>);
+    return (
+      <div>
+        <h2>
+          Dane kontaktowe dla: {this.state.districtOfficeContact.name}<br/></h2>
+        <div>
+          <span>
+            <strong>Adres:
+            </strong>
+          </span>
+          <span>
+            {contactInfo.address}
+          </span>
+        </div>
+        <div>
+          <span>
+            <strong>Telefon:
+            </strong>
+          </span>
+          <span>
+            {contactInfo.phone}</span>
+        </div>
+        <div>
+          <span>
+            <strong>Email:
+            </strong>
+          </span>
+          <span>
+            {contactInfo.email}
+          </span>
+        </div>
+        <ul>{groupsInfo}</ul>
+
+        <Link to="/">wróć</Link>
+      </div>
+    );
   }
 }
