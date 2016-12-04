@@ -16,7 +16,12 @@ describe('DistrictOfficeContact', () => {
     });
 
     it('should display suitable text', () => {
-      expect(contact.find('div').text()).toContain('Dane kontaktowe dla: Wola');
+      expect(contact.find('h2').text()).toContain('Dane kontaktowe dla:');
     });
+
+    it('should have in state data from qraphql', () => {
+      expect(contact.state.contact).not.toBe(null);
+      expect(contact.state.contact).not.toBe('undefined');
+  });
   });
 });

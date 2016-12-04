@@ -12,8 +12,8 @@ describe('DistrictOfficesList', () => {
       expect(list.type()).toBe('div');
     });
    it('should display suitable text in h3', () => {
-    expect(list.find('h3').text()).toEqual('Lista urzędów: ');
+    expect(list.find('h3').text()).toEqual('Lista urzędów:');
     });
-  
+
  });
 });
