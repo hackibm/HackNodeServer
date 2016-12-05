@@ -82,7 +82,7 @@ export default class DistrictOfficeContact extends React.Component {
       "box-shadow": "10px 10px 10px -8px rgba(0,0,0,0.75)"
     }
     const contactInfo = this.state.districtOfficeContact.contactInfo;
-    const groupsInfo = this.state.districtOfficeGroups.map((g, i) => <Group key={i} groupName={g.nazwaGrupy} time={g.liczbaKlwKolejce} count={g.liczbaCzynnychStan}/>);
+    const groupsInfo = this.state.districtOfficeGroups.map((g, i) => <Group key={i} groupName={g.nazwaGrupy} time={g.liczbaKlwKolejce} count={g.liczbaCzynnychStan} queue={g.liczbaKlwKolejce}/>);
 
     return (
       <div>
