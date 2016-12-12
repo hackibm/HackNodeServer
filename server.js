@@ -16,13 +16,55 @@ import cfenv from 'cfenv';
 // configuration of graphql endpoint
 import ncSchema from './data/schema';
 import graphqlHTTP from 'express-graphql';
+import cors from 'cors';
+
+//FIXES CORS ERROR
+const whitelist = [
+    // Allow domains here
+    'http://localhost:6003',
+    'https://hackibmserver.mybluemix.net',
+    'https://hackibmserver.mybluemix.net/graphql'
+];
+const corsOptions = {
+    origin(origin, callback){
+        const originIsWhitelisted = whitelist.indexOf(origin) !== -1;
+        callback(null, originIsWhitelisted);
+    },
+    credentials: true
+};
+
 
 
 // create a new express server
 const app = express();
 
+app.use(cors(corsOptions));
+
+app.use(function (req, res, next) {
+    // Website you wish to allow to connect
+    res.setHeader('Access-Control-Allow-Origin', 'https://hackibmserver.mybluemix.net');
+    res.setHeader('Access-Control-Allow-Origin', 'https://hackibmserver.mybluemix.net/graphql');
+
+    // Request methods you wish to allow
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+    // Request headers you wish to allow
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+
+    // Set to true if you need the website to include cookies in the requests sent
+    // to the API (e.g. in case you use sessions)
+    res.setHeader('Access-Control-Allow-Credentials', true);
+
+    // Pass to next layer of middleware
+    next();
+});
+
+
+
 // serve the files out of ./public as our main files
 app.use(express.static(__dirname + '/public'));
+
+
 
 
 app.use('/graphql', graphqlHTTP({
