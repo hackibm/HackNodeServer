@@ -3,7 +3,6 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "prestart":"webpack -p",
     "start": "./node_modules/.bin/babel-node --presets react,es2015 server.js",
     "dev": "webpack -d --watch",
     "devex": "webpack-dev-server --content-base public --inline --hot",
