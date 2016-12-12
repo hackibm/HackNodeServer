@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "prestart":"./node_modules/.bin/webpack -p",
+    "prestart":"webpack -p",
     "start": "./node_modules/.bin/babel-node --presets react,es2015 server.js",
     "dev": "webpack -d --watch",
     "devex": "webpack-dev-server --content-base public --inline --hot",
@@ -43,8 +43,7 @@
     "react-addons-test-utils": "^15.4.0",
     "react-dom": "^15.2.1",
     "react-router": "^3.0.0",
-    "webpack": "^1.12.12",
-    "webpack-dev-server": "^1.16.2"
+    "webpack": "^1.12.12"
   },
   "repository": {},
   "engines": {
