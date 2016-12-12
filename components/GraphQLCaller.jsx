@@ -3,7 +3,7 @@ import { Transport } from 'lokka-transport-http';
 
 export function fetchOffices() {
 		const client = new Lokka({
-		  transport: new Transport('http://localhost:6003/graphql')
+		  transport: new Transport('https://hackibmserver.mybluemix.net/graphql')
 		});
 
     client.query(`
@@ -24,7 +24,7 @@ export function fetchOffices() {
 
 	export function fetchContacts(id, callback1) {
 			const client = new Lokka({
-				transport: new Transport('http://localhost:6003/graphql')
+				transport: new Transport('https://hackibmserver.mybluemix.net/graphql')
 			});
 
 			client.query(`{
