@@ -34,6 +34,15 @@ export default class Group extends React.Component {
             {this.props.count}
           </span>
         </div>
+        <div>
+          <span>
+            <strong>Liczba osób w kolejce:
+            </strong>
+          </span>
+          <span>
+            {this.props.count}
+          </span>
+        </div>
         <br/>
       </div>
     );
