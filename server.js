@@ -23,6 +23,7 @@ const whitelist = [
     // Allow domains here
     'http://localhost:6003',
     'https://hackibmserver.mybluemix.net',
+    'http://hackibmserver.mybluemix.net',
     'https://hackibmserver.mybluemix.net/graphql'
 ];
 const corsOptions = {
@@ -42,7 +43,7 @@ app.use(cors(corsOptions));
 
 app.use(function (req, res, next) {
     // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', 'https://hackibmserver.mybluemix.net');
+    res.setHeader('Access-Control-Allow-Origin', 'http://hackibmserver.mybluemix.net');
     res.setHeader('Access-Control-Allow-Origin', 'https://hackibmserver.mybluemix.net/graphql');
 
     // Request methods you wish to allow
