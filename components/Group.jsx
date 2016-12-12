@@ -40,7 +40,7 @@ export default class Group extends React.Component {
             </strong>
           </span>
           <span>
-            {this.props.count}
+            {this.props.queue}
           </span>
         </div>
         <br/>
