@@ -4,7 +4,7 @@ import buttonStyles from './buttonStyles.js'
 
 const OfficeCase = (props) => {
   return (
-    <div id="officeCase">
+    <div id="district">
       <ul>
         <Link to={props.linkTo} style={buttonStyles}>{props.name}</Link><br/><br/><br/></ul>
     </div>

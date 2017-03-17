@@ -1,4 +1,6 @@
 import React from 'react';
+import {Link} from 'react-router';
+import buttonStyles from './buttonStyles.js'
 
 const App = (props) => {
     return (
@@ -10,6 +12,7 @@ const App = (props) => {
           "vertical-align": "middle",
           "line-height": "90px"
         }}>Stacz kolejkowy</h1>
+      <Link to="cases" style={buttonStyles}>Załatw sprawę</Link>
         <div style={{
           "display": "inline",
           "overflow": "hidden"
