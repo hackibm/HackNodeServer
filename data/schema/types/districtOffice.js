@@ -16,15 +16,20 @@ module.exports = new GraphQLObjectType({
   fields: {
     id: { type: GraphQLID },
     name: { type: new GraphQLNonNull(GraphQLString) },
+
     contactInfo: {
       type: ContactInfoType,
     },
     groups: {
       type: new GraphQLList(GroupType),
-      resolve: (parent, { id }) => {
+      args: {
+        case_id: { type: GraphQLString },
+      },
+      resolve: (parent, { case_id }) => {
         // call um data api
+        console.log('resolve do: '+parent.id+' '+case_id);
         return new Promise(function (resolve, reject) {
-          ListaOkienekUseCase.getGroupList(parent.id, resolve);
+          ListaOkienekUseCase.getGroupList(parent.id, case_id, resolve);
         });
       },
     },

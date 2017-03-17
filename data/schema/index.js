@@ -8,6 +8,7 @@ import {
 import DistrictOfficeType from './types/districtOffice';
 import ListaUrzedowUseCase from '../uc/ListaUrzedowUseCase.js';
 import CaseType from './types/case';
+import ListaSprawUseCase from '../uc/ListaSprawUseCase.js';
 
 const RootQueryType = new GraphQLObjectType({
   name: 'RootQueryType',
@@ -17,7 +18,6 @@ const RootQueryType = new GraphQLObjectType({
       type: new GraphQLList(DistrictOfficeType),
       args: {
         id: { type: GraphQLString },
-        case_id: { type: GraphQLString },
       },
       description: 'District offices optionaly identified by id field',
       resolve: (_, { id }) => {
@@ -35,28 +35,9 @@ const RootQueryType = new GraphQLObjectType({
       description: 'Cases optionaly identified by id field',
       resolve: (_, { id }) => {
          // call our db to resolve id
-         return [
-           {
-            "id": "drivingLicense",
-            "name": "Prawa jazdy",
-            "groupNames" : ["D-PRAWA JAZDY","PRAWA JAZDY","Prawa Jazdy","J-PRAWA JAZDY","L: PRAWA JAZDY"],
-          },
-            {
-             "id": "income500+",
-             "name": "500+ z wykazaniem dochodu",
-             "groupNames" : ["Y-500+","500+","Program 500+ Al. Solidarności","Z: PUNKT PODAWCZY, 500+", "MELDUNKI - J: 500+ Z WYKAZANIEM DOCHODU"],
-           },
-             {
-              "id": "identityCard",
-              "name": "Dowody osobiste",
-              "groupNames" : ["A-DOWODY OSOBISTE","DOW. OSOBISTE(SKŁ. DOK.)","Meldunki i dowody","M-MELDUNKI, DOWODY OSOBISTE", "MELDUNKI - SKŁADANIE WNIOSKÓW"],
-
-            },
-              {
-               "id": "noIncome500+",
-               "name": "500+ bez wykazania dochodu",
-               "groupNames" : ["Y-500+","500+","Program 500+ Al. Solidarności","Z: PUNKT PODAWCZY, 500+", "MELDUNKI - F: 500+ BEZ WYKAZANIA DOCHODU"],
-             }];
+         return new Promise(function (resolve, reject) {
+           ListaSprawUseCase.getCases(resolve);
+         });
       },
     },
   },
