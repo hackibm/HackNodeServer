@@ -30,6 +30,22 @@ app.use('/graphql', graphqlHTTP({
   graphiql: true,
 }));
 
+// Add headers
+app.use(function (req, res, next) {
+
+    // Website you wish to allow to connect
+    res.setHeader('Access-Control-Allow-Origin', '*');
+
+   
+    // Request headers you wish to allow
+    res.setHeader('Access-Control-Allow-Headers', 'XOrigin, X-Requested-With, Content-Type, Accept');
+
+    
+
+    // Pass to next layer of middleware
+    next();
+});
+
 // get the app environment from Cloud Foundry
 const appEnv = cfenv.getAppEnv();
 

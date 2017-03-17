@@ -1,11 +1,6 @@
 import React from 'react';
 
-export default class Group extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
+const Group = (props) => {
     return (
       <div>
         <div>
@@ -14,7 +9,7 @@ export default class Group extends React.Component {
             </strong>
           </span>
           <span>
-            {this.props.groupName}
+            {props.groupName}
           </span>
         </div>
         <div>
@@ -23,7 +18,7 @@ export default class Group extends React.Component {
             </strong>
           </span>
           <span>
-            {this.props.time}</span>
+            {props.time}</span>
         </div>
         <div>
           <span>
@@ -31,7 +26,7 @@ export default class Group extends React.Component {
             </strong>
           </span>
           <span>
-            {this.props.count}
+            {props.count}
           </span>
         </div>
         <div>
@@ -40,7 +35,7 @@ export default class Group extends React.Component {
             </strong>
           </span>
           <span>
-            {this.props.count}
+            {props.count}
           </span>
         </div>
         <br/>
@@ -48,4 +43,4 @@ export default class Group extends React.Component {
     );
   }
 
-}
+export default Group;

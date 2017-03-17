@@ -15,7 +15,7 @@ const config = {
         test: /\.jsx?/, exclude: /node_modules/,
         include: APP_DIR,
         loader: 'babel-loader',
-        query: { presets: ['react', 'es2015'] },
+        query: { presets: ['react', 'es2015','stage-0'] },
       },
       {
         test: /\.json$/,

@@ -1,7 +1,6 @@
 import React from 'react';
 
-export default class App extends React.Component {
-  render() {
+const App = (props) => {
     return (
       <div>
         <h1 style={{
@@ -18,7 +17,7 @@ export default class App extends React.Component {
           <div style={{
             "float": "left",
             "margin-left": "20px"
-          }}>{this.props.children}</div>
+          }}>{props.children}</div>
           <div style={{
             "float": "left"
           }}>
@@ -32,4 +31,5 @@ export default class App extends React.Component {
       </div>
     );
   }
-}
+
+export default App;
