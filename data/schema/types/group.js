@@ -16,5 +16,7 @@ module.exports = new GraphQLObjectType({
     literaGrupy: { type: GraphQLString },
     liczbaKlwKolejce: { type: GraphQLString },
     aktualnyNumer: { type: GraphQLString },
+    czasObslugiZunifikowany: { type: GraphQLString },
+    lacznyCzasObslugi: { type: GraphQLString },
   },
 });
