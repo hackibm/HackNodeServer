@@ -16,7 +16,7 @@ class DistrictOfficeCases extends React.Component {
   }
 
   fetchOffices() {
-    const client = new Lokka({ transport: new Transport('https://hackibmserver.mybluemix.net/graphql') });
+    const client = new Lokka({ transport: new Transport('http://localhost:6003/graphql') });
 
     client.query(`
       {

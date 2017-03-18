@@ -19,7 +19,7 @@ export default class DistrictOfficeContact extends React.Component {
   }
 
   fetchContacts(id) {
-    const client = new Lokka({ transport: new Transport('https://hackibmserver.mybluemix.net/graphql') });
+    const client = new Lokka({ transport: new Transport('http://localhost:6003/graphql') });
 
     client.query(`{
         offices(id :"${id}"){
@@ -43,7 +43,7 @@ export default class DistrictOfficeContact extends React.Component {
   }
 
   fetchGroups(id) {
-    const client = new Lokka({transport: new Transport('https://hackibmserver.mybluemix.net/graphql')});
+    const client = new Lokka({transport: new Transport('http://localhost:6003/graphql')});
 
     client.query(`{
   offices(id : "${id}"){
