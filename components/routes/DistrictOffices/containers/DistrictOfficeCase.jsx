@@ -30,6 +30,7 @@ class DistrictOfficeCase extends React.Component {
             openingHours
             longitude
             latitude
+            isOpen
           }
           groups(case_id:"${caseId}"){
             nazwaGrupy,
@@ -41,7 +42,8 @@ class DistrictOfficeCase extends React.Component {
     `).then(result => {
       console.log(JSON.stringify(result));
       const offices = result.offices.map(function (oneOffice) {
-        return { name: oneOffice.name, serviceTime: oneOffice.groups[0].lacznyCzasObslugi, distance: '10 km', isOpen: false };
+
+        return { name: oneOffice.name, serviceTime: oneOffice.groups[0].lacznyCzasObslugi, distance: '10 km', isOpen: oneOffice.contactInfo.isOpen , openingHours: oneOffice.contactInfo.openingHours};
       });
       //  const districtOffices = result.offices.map((office) => office.name);
       console.log(offices);
@@ -56,7 +58,7 @@ class DistrictOfficeCase extends React.Component {
     if(this.props.offices!=null){
        offices = this.props.offices.map((g, i) => {
          var s = 'GRAY';
-         if (g.isOpen) {
+         if (g.isOpen == 'true') {
            if (g.serviceTime > 15) s = 'RED';
            else s = 'GREEN';
          }

@@ -10,6 +10,7 @@ module.exports = new GraphQLObjectType({
     phone: { type: GraphQLString },
     email: { type: GraphQLString },
     openingHours: { type: GraphQLString },
+    isOpen: { type: GraphQLString },
     longitude: { type: GraphQLString },
     latitude: { type: GraphQLString },
   },

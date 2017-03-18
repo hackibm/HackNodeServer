@@ -58956,11 +58956,10 @@
 
 	      var client = new _lokka.Lokka({ transport: new _lokkaTransportHttp.Transport('http://localhost:6003/graphql') });
 
-	      client.query('\n      {\n        offices{\n          name,\n          contactInfo {\n            address\n            phone\n            email\n            openingHours\n            longitude\n            latitude\n            isOpen\n          }\n          groups(case_id:"' + caseId + '"){\n            nazwaGrupy,\n            lacznyCzasObslugi,\n            liczbaKlwKolejce\n          }\n        }\n      }\n    ').then(function (result) {
+	      client.query('\n      {\n        offices{\n          name,\n          contactInfo {\n            address\n            phone\n            email\n            openingHours\n            longitude\n            latitude\n          }\n          groups(case_id:"' + caseId + '"){\n            nazwaGrupy,\n            lacznyCzasObslugi,\n            liczbaKlwKolejce\n          }\n        }\n      }\n    ').then(function (result) {
 	        console.log(JSON.stringify(result));
 	        var offices = result.offices.map(function (oneOffice) {
-
-	          return { name: oneOffice.name, serviceTime: oneOffice.groups[0].lacznyCzasObslugi, distance: '10 km', isOpen: oneOffice.contactInfo.isOpen, openingHours: oneOffice.contactInfo.openingHours };
+	          return { name: oneOffice.name, serviceTime: oneOffice.groups[0].lacznyCzasObslugi, distance: '10 km', isOpen: false };
 	        });
 	        //  const districtOffices = result.offices.map((office) => office.name);
 	        console.log(offices);
@@ -58976,7 +58975,7 @@
 	      if (this.props.offices != null) {
 	        offices = this.props.offices.map(function (g, i) {
 	          var s = 'GRAY';
-	          if (g.isOpen == 'true') {
+	          if (g.isOpen) {
 	            if (g.serviceTime > 15) s = 'RED';else s = 'GREEN';
 	          }
 
@@ -59034,76 +59033,6 @@
 	      'ul',
 	      null,
 	      props.offices
-	    ),
-	    _react2.default.createElement(
-	      'span',
-	      null,
-	      'legenda'
-	    ),
-	    _react2.default.createElement(
-	      'div',
-	      null,
-	      _react2.default.createElement(
-	        'div',
-	        { style: {
-	            "display": "inline",
-	            "overflow": "hidden"
-	          } },
-	        _react2.default.createElement('div', { style: {
-	            "height": "30px",
-	            "width": "30px",
-	            "float": "left",
-	            "margin": "10px",
-	            "padding": "5px",
-	            "background-color": "GREY"
-	          } }),
-	        _react2.default.createElement(
-	          'div',
-	          null,
-	          'nieczynne'
-	        ),
-	        ' '
-	      ),
-	      _react2.default.createElement(
-	        'div',
-	        { style: {
-	            "display": "inline",
-	            "overflow": "hidden"
-	          } },
-	        _react2.default.createElement('div', { style: {
-	            "height": "30px",
-	            "width": "30px",
-	            "float": "left",
-	            "margin": "10px",
-	            "padding": "5px",
-	            "background-color": "GREEN"
-	          } }),
-	        _react2.default.createElement(
-	          'div',
-	          null,
-	          'ponizej 15 min oczekiwania'
-	        )
-	      ),
-	      _react2.default.createElement(
-	        'div',
-	        { style: {
-	            "display": "inline",
-	            "overflow": "hidden"
-	          } },
-	        _react2.default.createElement('div', { style: {
-	            "height": "30px",
-	            "width": "30px",
-	            "float": "left",
-	            "margin": "10px",
-	            "padding": "5px",
-	            "background-color": "RED"
-	          } }),
-	        _react2.default.createElement(
-	          'div',
-	          null,
-	          'ponad 15 min oczekiwania'
-	        )
-	      )
 	    )
 	  );
 	};
@@ -59165,14 +59094,12 @@
 	          _react2.default.createElement(
 	            "div",
 	            null,
-	            "godziny otwarcia: ",
-	            props.officeData.openingHours
+	            "odleg\u0142o\u015B\u0107: ",
+	            props.officeData.distance
 	          )
 	        )
 	      )
 	    ),
-	    _react2.default.createElement("br", null),
-	    _react2.default.createElement("br", null),
 	    _react2.default.createElement("br", null)
 	  );
 	};

@@ -24,12 +24,14 @@ const Office = (props) => {
                 czas obsługi: {props.officeData.serviceTime} min
               </div>
               <div>
-                odległość: {props.officeData.distance}
+                godziny otwarcia: {props.officeData.openingHours}
               </div>
 
           </div>
         </div>
       </div>
+        <br/>
+        <br/>
         <br/>
       </div>
     );
