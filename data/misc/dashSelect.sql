@@ -59,5 +59,12 @@ insert into DASH7396.UMDATAINFO_AVG
     when g.NAZWAGRUPY in ('Y-500+','500+','Program 500+ Al. Solidarności','Z: PUNKT PODAWCZY, 500+', 'MELDUNKI - F: 500+ BEZ WYKAZANIA DOCHODU') then '500+ bez wykazania dochodu'
     else 'inne' end as NAZWASKLASYFIKOWANA,
     ( case when LENGTH(RTRIM(TRANSLATE(g.CZASOBSLUGI, '*', ' 0123456789'))) = 0  then g.CZASOBSLUGI*g.LICZBAKLWKOLEJCE else (HOUR(TIME(g.CZASOBSLUGI)) * 60 + MINUTE(TIME(g.CZASOBSLUGI)))*g.LICZBAKLWKOLEJCE end) as lacznyczasoczekiwania
-    from DASH7396.UMDATA u, DASH7396.UMDATA_PAYLOAD_RESULT_GRUPY g)
+    from DASH7396.UMDATA u, DASH7396.UMDATA_PAYLOAD_RESULT_GRUPY g
+    where u.PAYLOAD_UMNAME = 'UD Bielany'
+    and g.NAZWAGRUPY in
+    ('D-PRAWA JAZDY','PRAWA JAZDY','Prawa Jazdy','J-PRAWA JAZDY','L: PRAWA JAZDY','Y-500+','500+',
+    'Program 500+ Al. Solidarności','Z: PUNKT PODAWCZY, 500+', 'MELDUNKI - J: 500+ Z WYKAZANIEM DOCHODU',
+    'A-DOWODY OSOBISTE','DOW. OSOBISTE(SKŁ. DOK.)','Meldunki i dowody','M-MELDUNKI, DOWODY OSOBISTE',
+    'MELDUNKI - SKŁADANIE WNIOSKÓW','Y-500+','500+','Program 500+ Al. Solidarności','Z: PUNKT PODAWCZY, 500+',
+     'MELDUNKI - F: 500+ BEZ WYKAZANIA DOCHODU') )
   group by (um, dzienTygodnia, roundczas, NAZWASKLASYFIKOWANA)
