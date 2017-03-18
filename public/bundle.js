@@ -22201,7 +22201,7 @@
 	    value: function fetchOffices() {
 	      var _this2 = this;
 	
-	      var client = new _lokka.Lokka({ transport: new _lokkaTransportHttp.Transport('https://hackibmserver.mybluemix.net/graphql') });
+	      var client = new _lokka.Lokka({ transport: new _lokkaTransportHttp.Transport('http://hackibmserver.mybluemix.net/graphql') });
 	
 	      client.query('\n      {\n        offices{\n        id,\n        name\n       }\n      }\n    ').then(function (result) {
 	        console.log(JSON.stringify(result));
@@ -58959,7 +58959,7 @@
 	    value: function fetchContacts(id) {
 	      var _this2 = this;
 	
-	      var client = new _lokka.Lokka({ transport: new _lokkaTransportHttp.Transport('https://hackibmserver.mybluemix.net/graphql') });
+	      var client = new _lokka.Lokka({ transport: new _lokkaTransportHttp.Transport('http://hackibmserver.mybluemix.net/graphql') });
 	
 	      client.query('{\n        offices(id :"' + id + '"){\n          id,\n          name,\n          contactInfo{\n            address,\n            phone,\n            email,\n            openingHours\n          }\n        }\n      }\n      ').then(function (result) {
 	        var districtOfficeContact = result.offices.map(function (office) {
@@ -58974,7 +58974,7 @@
 	    value: function fetchGroups(id) {
 	      var _this3 = this;
 	
-	      var client = new _lokka.Lokka({ transport: new _lokkaTransportHttp.Transport('https://hackibmserver.mybluemix.net/graphql') });
+	      var client = new _lokka.Lokka({ transport: new _lokkaTransportHttp.Transport('http://hackibmserver.mybluemix.net/graphql') });
 	
 	      client.query('{\n  offices(id : "' + id + '"){\n    id,\n    name,\n    groups{\n      nazwaGrupy,\n      czasObslugi,\n      liczbaCzynnychStan,\n      liczbaKlwKolejce,\n      aktualnyNumer\n    }\n  }}\n      ').then(function (result) {
 	        var districtOfficeGroups = result.offices[0].groups;
@@ -59318,7 +59318,7 @@
 	    value: function fetchOffices() {
 	      var _this2 = this;
 	
-	      var client = new _lokka.Lokka({ transport: new _lokkaTransportHttp.Transport('https://hackibmserver.mybluemix.net/graphql') });
+	      var client = new _lokka.Lokka({ transport: new _lokkaTransportHttp.Transport('http://hackibmserver.mybluemix.net/graphql') });
 	
 	      client.query('\n      {\n        cases{\n        id,\n        name\n       }\n      }\n    ').then(function (result) {
 	        console.log(JSON.stringify(result));
