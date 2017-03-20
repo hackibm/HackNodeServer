@@ -58927,9 +58927,9 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	var SERVER_URL = exports.SERVER_URL = 'http://localhost:6002/graphql';
+	// export const SERVER_URL = 'http://localhost:6002/graphql';
 	// export const SERVER_URL = 'http://localhost:6003/graphql';
-	// export const SERVER_URL = 'http://HackIBMServer.mybluemix.net/graphql';
+	var SERVER_URL = exports.SERVER_URL = 'http://HackIBMServer.mybluemix.net/graphql';
 
 /***/ },
 /* 446 */
