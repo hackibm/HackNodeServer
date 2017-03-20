@@ -12,4 +12,12 @@ describe('Mapper', () => {
 
     expect(mapCaseId('drivingLicense').length).toBe(5);
   });
+
+  it('zwraca 5 nazw zmapowanych dla identityCard', () => {
+    console.log('Start testu mappera');
+
+    expect(mapCaseId('identityCard').length).toBe(5);
+  });
+
+
 });

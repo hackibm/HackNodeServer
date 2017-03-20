@@ -7,18 +7,18 @@ const caseList = [
    {
     "id": "income500+",
     "name": "500+ z wykazaniem dochodu",
-    "groupNames" : ["Y-500+","500+","Program 500+ Al. Solidarności","Z: PUNKT PODAWCZY, 500+", "MELDUNKI - J: 500+ Z WYKAZANIEM DOCHODU"],
+    "groupNames" : ["Y-500+","500+","Program 500+ Al. Solidarności","Z: PUNKT PODAWCZY, 500+", "J: 500+ Z WYKAZANIEM DOCHODU"],
   },
     {
      "id": "identityCard",
      "name": "Dowody osobiste",
-     "groupNames" : ["A-DOWODY OSOBISTE","DOW. OSOBISTE(SKŁ. DOK.)","Meldunki i dowody","M-MELDUNKI, DOWODY OSOBISTE", "MELDUNKI - SKŁADANIE WNIOSKÓW"],
+     "groupNames" : ["A-DOWODY OSOBISTE","DOW. OSOBISTE(SKŁ. DOK.)","Meldunki i dowody","M-MELDUNKI, DOWODY OSOBISTE", "P: MELDUNKI - SKŁADANIE WNIOSKÓW"],
 
    },
      {
       "id": "noIncome500+",
       "name": "500+ bez wykazania dochodu",
-      "groupNames" : ["Y-500+","500+","Program 500+ Al. Solidarności","Z: PUNKT PODAWCZY, 500+", "MELDUNKI - F: 500+ BEZ WYKAZANIA DOCHODU"],
+      "groupNames" : ["Y-500+","500+","Program 500+ Al. Solidarności","Z: PUNKT PODAWCZY, 500+", "F: 500+ BEZ WYKAZANIA DOCHODU"],
     }];
 
 

@@ -46,7 +46,7 @@ export default class DistrictOfficeContact extends React.Component {
   }
 
   fetchGroups(id) {
-    const client = new Lokka({transport: new Transport('http://hackibmserver.mybluemix.net/graphql')});
+    const client = new Lokka({transport: new Transport(SERVER_URL)});
 
     client.query(`{
   offices(id : "${id}"){

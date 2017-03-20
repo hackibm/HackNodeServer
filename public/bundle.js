@@ -65,43 +65,43 @@
 	
 	var _DistrictOfficeContact2 = _interopRequireDefault(_DistrictOfficeContact);
 	
-	var _DistrictOfficeCases = __webpack_require__(/*! ./routes/DistrictOffices/containers/DistrictOfficeCases.jsx */ 447);
+	var _DistrictOfficeCases = __webpack_require__(/*! ./routes/DistrictOffices/containers/DistrictOfficeCases.jsx */ 450);
 	
 	var _DistrictOfficeCases2 = _interopRequireDefault(_DistrictOfficeCases);
 	
-	var _DistrictOfficeCase = __webpack_require__(/*! ./routes/DistrictOffices/containers/DistrictOfficeCase.jsx */ 450);
+	var _DistrictOfficeCase = __webpack_require__(/*! ./routes/DistrictOffices/containers/DistrictOfficeCase.jsx */ 453);
 	
 	var _DistrictOfficeCase2 = _interopRequireDefault(_DistrictOfficeCase);
 	
-	var _App = __webpack_require__(/*! ./routes/DistrictOffices/components/App.jsx */ 453);
+	var _App = __webpack_require__(/*! ./routes/DistrictOffices/components/App.jsx */ 456);
 	
 	var _App2 = _interopRequireDefault(_App);
 	
 	var _reactRouter = __webpack_require__(/*! react-router */ 180);
 	
-	var _reactRedux = __webpack_require__(/*! react-redux */ 454);
+	var _reactRedux = __webpack_require__(/*! react-redux */ 457);
 	
-	var _redux = __webpack_require__(/*! redux */ 463);
+	var _redux = __webpack_require__(/*! redux */ 466);
 	
-	var _listReducers = __webpack_require__(/*! ./modules/DistrictOffices/reducers/listReducers.js */ 489);
+	var _listReducers = __webpack_require__(/*! ./modules/DistrictOffices/reducers/listReducers.js */ 492);
 	
 	var _listReducers2 = _interopRequireDefault(_listReducers);
 	
-	var _contactReducers = __webpack_require__(/*! ./modules/DistrictOffices/reducers/contactReducers.js */ 491);
+	var _contactReducers = __webpack_require__(/*! ./modules/DistrictOffices/reducers/contactReducers.js */ 494);
 	
 	var _contactReducers2 = _interopRequireDefault(_contactReducers);
 	
-	var _caseReducers = __webpack_require__(/*! ./modules/DistrictOffices/reducers/caseReducers.js */ 492);
+	var _caseReducers = __webpack_require__(/*! ./modules/DistrictOffices/reducers/caseReducers.js */ 495);
 	
 	var _caseReducers2 = _interopRequireDefault(_caseReducers);
 	
-	var _caseOfficesReducer = __webpack_require__(/*! ./modules/DistrictOffices/reducers/caseOfficesReducer.js */ 493);
+	var _caseOfficesReducer = __webpack_require__(/*! ./modules/DistrictOffices/reducers/caseOfficesReducer.js */ 496);
 	
 	var _caseOfficesReducer2 = _interopRequireDefault(_caseOfficesReducer);
 	
-	var _immutable = __webpack_require__(/*! immutable */ 490);
+	var _immutable = __webpack_require__(/*! immutable */ 493);
 	
-	var _actions = __webpack_require__(/*! ./modules/DistrictOffices/actions/actions.js */ 494);
+	var _actions = __webpack_require__(/*! ./modules/DistrictOffices/actions/actions.js */ 497);
 	
 	var _actions2 = _interopRequireDefault(_actions);
 	
@@ -58927,9 +58927,9 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	// export const SERVER_URL = 'http://localhost:6002/graphql';
+	var SERVER_URL = exports.SERVER_URL = 'http://localhost:6002/graphql';
 	// export const SERVER_URL = 'http://localhost:6003/graphql';
-	var SERVER_URL = exports.SERVER_URL = 'http://HackIBMServer.mybluemix.net/graphql';
+	// export const SERVER_URL = 'http://HackIBMServer.mybluemix.net/graphql';
 
 /***/ },
 /* 446 */
@@ -58956,11 +58956,11 @@
 	
 	var _lokkaTransportHttp = __webpack_require__(/*! lokka-transport-http */ 283);
 	
-	var _DistrictOfficeContactView = __webpack_require__(/*! ./../components/DistrictOfficeContactView.jsx */ 497);
+	var _DistrictOfficeContactView = __webpack_require__(/*! ./../components/DistrictOfficeContactView.jsx */ 447);
 	
 	var _DistrictOfficeContactView2 = _interopRequireDefault(_DistrictOfficeContactView);
 	
-	var _Group = __webpack_require__(/*! ./../components/Group.jsx */ 498);
+	var _Group = __webpack_require__(/*! ./../components/Group.jsx */ 448);
 	
 	var _Group2 = _interopRequireDefault(_Group);
 	
@@ -59009,7 +59009,7 @@
 	    value: function fetchGroups(id) {
 	      var _this3 = this;
 	
-	      var client = new _lokka.Lokka({ transport: new _lokkaTransportHttp.Transport('http://hackibmserver.mybluemix.net/graphql') });
+	      var client = new _lokka.Lokka({ transport: new _lokkaTransportHttp.Transport(_serverConstants.SERVER_URL) });
 	
 	      client.query('{\n  offices(id : "' + id + '"){\n    id,\n    name,\n    groups{\n      nazwaGrupy,\n      czasObslugi,\n      liczbaCzynnychStan,\n      liczbaKlwKolejce,\n      aktualnyNumer\n    }\n  }}\n      ').then(function (result) {
 	        var districtOfficeGroups = result.offices[0].groups;
@@ -59050,6 +59050,253 @@
 
 /***/ },
 /* 447 */
+/*!************************************************************************************!*\
+  !*** ./components/routes/DistrictOffices/components/DistrictOfficeContactView.jsx ***!
+  \************************************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRouter = __webpack_require__(/*! react-router */ 180);
+	
+	var _buttonStyles = __webpack_require__(/*! ./buttonStyles.js */ 235);
+	
+	var _buttonStyles2 = _interopRequireDefault(_buttonStyles);
+	
+	var _Group = __webpack_require__(/*! ./Group.jsx */ 448);
+	
+	var _Group2 = _interopRequireDefault(_Group);
+	
+	var _Address = __webpack_require__(/*! ./Address.jsx */ 449);
+	
+	var _Address2 = _interopRequireDefault(_Address);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var DistrictOfficeContactView = function DistrictOfficeContactView(props) {
+	  return _react2.default.createElement(
+	    'div',
+	    { id: 'districtOfficeContactView' },
+	    _react2.default.createElement(
+	      'h2',
+	      null,
+	      'Dane kontaktowe dla: ',
+	      props.name,
+	      _react2.default.createElement('br', null)
+	    ),
+	    _react2.default.createElement(
+	      _Address2.default,
+	      { contactInfo: props.contactInfo },
+	      ' '
+	    ),
+	    _react2.default.createElement(
+	      'ul',
+	      null,
+	      props.groupsInfo
+	    ),
+	    _react2.default.createElement(
+	      _reactRouter.Link,
+	      { to: '/', style: _buttonStyles2.default },
+	      'wr\xF3\u0107'
+	    )
+	  );
+	};
+	
+	exports.default = DistrictOfficeContactView;
+
+/***/ },
+/* 448 */
+/*!****************************************************************!*\
+  !*** ./components/routes/DistrictOffices/components/Group.jsx ***!
+  \****************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var Group = function Group(props) {
+	  return _react2.default.createElement(
+	    'div',
+	    null,
+	    _react2.default.createElement(
+	      'div',
+	      null,
+	      _react2.default.createElement(
+	        'span',
+	        null,
+	        _react2.default.createElement(
+	          'strong',
+	          null,
+	          'Nazwa grupy:'
+	        )
+	      ),
+	      _react2.default.createElement(
+	        'span',
+	        null,
+	        props.groupName
+	      )
+	    ),
+	    _react2.default.createElement(
+	      'div',
+	      null,
+	      _react2.default.createElement(
+	        'span',
+	        null,
+	        _react2.default.createElement(
+	          'strong',
+	          null,
+	          'Czas obs\u0142ugi:'
+	        )
+	      ),
+	      _react2.default.createElement(
+	        'span',
+	        null,
+	        props.time
+	      )
+	    ),
+	    _react2.default.createElement(
+	      'div',
+	      null,
+	      _react2.default.createElement(
+	        'span',
+	        null,
+	        _react2.default.createElement(
+	          'strong',
+	          null,
+	          'Liczba Czynnych Stanowisk:'
+	        )
+	      ),
+	      _react2.default.createElement(
+	        'span',
+	        null,
+	        props.count
+	      )
+	    ),
+	    _react2.default.createElement(
+	      'div',
+	      null,
+	      _react2.default.createElement(
+	        'span',
+	        null,
+	        _react2.default.createElement(
+	          'strong',
+	          null,
+	          'Liczba os\xF3b w kolejce:'
+	        )
+	      ),
+	      _react2.default.createElement(
+	        'span',
+	        null,
+	        props.count
+	      )
+	    ),
+	    _react2.default.createElement('br', null)
+	  );
+	};
+	
+	exports.default = Group;
+
+/***/ },
+/* 449 */
+/*!******************************************************************!*\
+  !*** ./components/routes/DistrictOffices/components/Address.jsx ***!
+  \******************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var Address = function Address(props) {
+	  return _react2.default.createElement(
+	    'div',
+	    null,
+	    _react2.default.createElement(
+	      'div',
+	      null,
+	      _react2.default.createElement(
+	        'span',
+	        null,
+	        _react2.default.createElement(
+	          'strong',
+	          null,
+	          'Adres: '
+	        )
+	      ),
+	      _react2.default.createElement(
+	        'span',
+	        null,
+	        props.contactInfo.address
+	      )
+	    ),
+	    _react2.default.createElement(
+	      'div',
+	      null,
+	      _react2.default.createElement(
+	        'span',
+	        null,
+	        _react2.default.createElement(
+	          'strong',
+	          null,
+	          'Telefon: '
+	        )
+	      ),
+	      _react2.default.createElement(
+	        'span',
+	        null,
+	        props.contactInfo.phone
+	      )
+	    ),
+	    _react2.default.createElement(
+	      'div',
+	      null,
+	      _react2.default.createElement(
+	        'span',
+	        null,
+	        _react2.default.createElement(
+	          'strong',
+	          null,
+	          'Email: '
+	        )
+	      ),
+	      _react2.default.createElement(
+	        'span',
+	        null,
+	        props.contactInfo.email
+	      )
+	    )
+	  );
+	};
+	
+	exports.default = Address;
+
+/***/ },
+/* 450 */
 /*!******************************************************************************!*\
   !*** ./components/routes/DistrictOffices/containers/DistrictOfficeCases.jsx ***!
   \******************************************************************************/
@@ -59067,11 +59314,11 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _OfficeCase = __webpack_require__(/*! ./../components/OfficeCase.jsx */ 448);
+	var _OfficeCase = __webpack_require__(/*! ./../components/OfficeCase.jsx */ 451);
 	
 	var _OfficeCase2 = _interopRequireDefault(_OfficeCase);
 	
-	var _DistrictOfficeCasesView = __webpack_require__(/*! ./../components/DistrictOfficeCasesView.jsx */ 449);
+	var _DistrictOfficeCasesView = __webpack_require__(/*! ./../components/DistrictOfficeCasesView.jsx */ 452);
 	
 	var _DistrictOfficeCasesView2 = _interopRequireDefault(_DistrictOfficeCasesView);
 	
@@ -59147,7 +59394,7 @@
 	exports.default = DistrictOfficeCases;
 
 /***/ },
-/* 448 */
+/* 451 */
 /*!*********************************************************************!*\
   !*** ./components/routes/DistrictOffices/components/OfficeCase.jsx ***!
   \*********************************************************************/
@@ -59193,7 +59440,7 @@
 	exports.default = OfficeCase;
 
 /***/ },
-/* 449 */
+/* 452 */
 /*!**********************************************************************************!*\
   !*** ./components/routes/DistrictOffices/components/DistrictOfficeCasesView.jsx ***!
   \**********************************************************************************/
@@ -59209,7 +59456,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _OfficeCase = __webpack_require__(/*! ./../components/OfficeCase.jsx */ 448);
+	var _OfficeCase = __webpack_require__(/*! ./../components/OfficeCase.jsx */ 451);
 	
 	var _OfficeCase2 = _interopRequireDefault(_OfficeCase);
 	
@@ -59235,7 +59482,7 @@
 	exports.default = DistrictOfficeCasesView;
 
 /***/ },
-/* 450 */
+/* 453 */
 /*!*****************************************************************************!*\
   !*** ./components/routes/DistrictOffices/containers/DistrictOfficeCase.jsx ***!
   \*****************************************************************************/
@@ -59253,15 +59500,15 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _OfficeCase = __webpack_require__(/*! ./../components/OfficeCase.jsx */ 448);
+	var _OfficeCase = __webpack_require__(/*! ./../components/OfficeCase.jsx */ 451);
 	
 	var _OfficeCase2 = _interopRequireDefault(_OfficeCase);
 	
-	var _DistrictOfficeCaseView = __webpack_require__(/*! ./../components/DistrictOfficeCaseView.jsx */ 451);
+	var _DistrictOfficeCaseView = __webpack_require__(/*! ./../components/DistrictOfficeCaseView.jsx */ 454);
 	
 	var _DistrictOfficeCaseView2 = _interopRequireDefault(_DistrictOfficeCaseView);
 	
-	var _Office = __webpack_require__(/*! ./../components/Office.jsx */ 452);
+	var _Office = __webpack_require__(/*! ./../components/Office.jsx */ 455);
 	
 	var _Office2 = _interopRequireDefault(_Office);
 	
@@ -59346,7 +59593,7 @@
 	exports.default = DistrictOfficeCase;
 
 /***/ },
-/* 451 */
+/* 454 */
 /*!*********************************************************************************!*\
   !*** ./components/routes/DistrictOffices/components/DistrictOfficeCaseView.jsx ***!
   \*********************************************************************************/
@@ -59362,7 +59609,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Office = __webpack_require__(/*! ./Office.jsx */ 452);
+	var _Office = __webpack_require__(/*! ./Office.jsx */ 455);
 	
 	var _Office2 = _interopRequireDefault(_Office);
 	
@@ -59458,7 +59705,7 @@
 	exports.default = DistrictOfficeCaseView;
 
 /***/ },
-/* 452 */
+/* 455 */
 /*!*****************************************************************!*\
   !*** ./components/routes/DistrictOffices/components/Office.jsx ***!
   \*****************************************************************/
@@ -59529,7 +59776,7 @@
 	exports.default = Office;
 
 /***/ },
-/* 453 */
+/* 456 */
 /*!**************************************************************!*\
   !*** ./components/routes/DistrictOffices/components/App.jsx ***!
   \**************************************************************/
@@ -59605,7 +59852,7 @@
 	exports.default = App;
 
 /***/ },
-/* 454 */
+/* 457 */
 /*!************************************!*\
   !*** ./~/react-redux/lib/index.js ***!
   \************************************/
@@ -59616,15 +59863,15 @@
 	exports.__esModule = true;
 	exports.connect = exports.connectAdvanced = exports.Provider = undefined;
 	
-	var _Provider = __webpack_require__(/*! ./components/Provider */ 455);
+	var _Provider = __webpack_require__(/*! ./components/Provider */ 458);
 	
 	var _Provider2 = _interopRequireDefault(_Provider);
 	
-	var _connectAdvanced = __webpack_require__(/*! ./components/connectAdvanced */ 458);
+	var _connectAdvanced = __webpack_require__(/*! ./components/connectAdvanced */ 461);
 	
 	var _connectAdvanced2 = _interopRequireDefault(_connectAdvanced);
 	
-	var _connect = __webpack_require__(/*! ./connect/connect */ 460);
+	var _connect = __webpack_require__(/*! ./connect/connect */ 463);
 	
 	var _connect2 = _interopRequireDefault(_connect);
 	
@@ -59635,7 +59882,7 @@
 	exports.connect = _connect2.default;
 
 /***/ },
-/* 455 */
+/* 458 */
 /*!**************************************************!*\
   !*** ./~/react-redux/lib/components/Provider.js ***!
   \**************************************************/
@@ -59648,9 +59895,9 @@
 	
 	var _react = __webpack_require__(/*! react */ 1);
 	
-	var _PropTypes = __webpack_require__(/*! ../utils/PropTypes */ 456);
+	var _PropTypes = __webpack_require__(/*! ../utils/PropTypes */ 459);
 	
-	var _warning = __webpack_require__(/*! ../utils/warning */ 457);
+	var _warning = __webpack_require__(/*! ../utils/warning */ 460);
 	
 	var _warning2 = _interopRequireDefault(_warning);
 	
@@ -59722,7 +59969,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../process/browser.js */ 3)))
 
 /***/ },
-/* 456 */
+/* 459 */
 /*!**********************************************!*\
   !*** ./~/react-redux/lib/utils/PropTypes.js ***!
   \**********************************************/
@@ -59749,7 +59996,7 @@
 	});
 
 /***/ },
-/* 457 */
+/* 460 */
 /*!********************************************!*\
   !*** ./~/react-redux/lib/utils/warning.js ***!
   \********************************************/
@@ -59782,7 +60029,7 @@
 	}
 
 /***/ },
-/* 458 */
+/* 461 */
 /*!*********************************************************!*\
   !*** ./~/react-redux/lib/components/connectAdvanced.js ***!
   \*********************************************************/
@@ -59806,11 +60053,11 @@
 	
 	var _react = __webpack_require__(/*! react */ 1);
 	
-	var _Subscription = __webpack_require__(/*! ../utils/Subscription */ 459);
+	var _Subscription = __webpack_require__(/*! ../utils/Subscription */ 462);
 	
 	var _Subscription2 = _interopRequireDefault(_Subscription);
 	
-	var _PropTypes = __webpack_require__(/*! ../utils/PropTypes */ 456);
+	var _PropTypes = __webpack_require__(/*! ../utils/PropTypes */ 459);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -60080,7 +60327,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../process/browser.js */ 3)))
 
 /***/ },
-/* 459 */
+/* 462 */
 /*!*************************************************!*\
   !*** ./~/react-redux/lib/utils/Subscription.js ***!
   \*************************************************/
@@ -60181,7 +60428,7 @@
 	exports.default = Subscription;
 
 /***/ },
-/* 460 */
+/* 463 */
 /*!**********************************************!*\
   !*** ./~/react-redux/lib/connect/connect.js ***!
   \**********************************************/
@@ -60195,27 +60442,27 @@
 	
 	exports.createConnect = createConnect;
 	
-	var _connectAdvanced = __webpack_require__(/*! ../components/connectAdvanced */ 458);
+	var _connectAdvanced = __webpack_require__(/*! ../components/connectAdvanced */ 461);
 	
 	var _connectAdvanced2 = _interopRequireDefault(_connectAdvanced);
 	
-	var _shallowEqual = __webpack_require__(/*! ../utils/shallowEqual */ 461);
+	var _shallowEqual = __webpack_require__(/*! ../utils/shallowEqual */ 464);
 	
 	var _shallowEqual2 = _interopRequireDefault(_shallowEqual);
 	
-	var _mapDispatchToProps = __webpack_require__(/*! ./mapDispatchToProps */ 462);
+	var _mapDispatchToProps = __webpack_require__(/*! ./mapDispatchToProps */ 465);
 	
 	var _mapDispatchToProps2 = _interopRequireDefault(_mapDispatchToProps);
 	
-	var _mapStateToProps = __webpack_require__(/*! ./mapStateToProps */ 485);
+	var _mapStateToProps = __webpack_require__(/*! ./mapStateToProps */ 488);
 	
 	var _mapStateToProps2 = _interopRequireDefault(_mapStateToProps);
 	
-	var _mergeProps = __webpack_require__(/*! ./mergeProps */ 486);
+	var _mergeProps = __webpack_require__(/*! ./mergeProps */ 489);
 	
 	var _mergeProps2 = _interopRequireDefault(_mergeProps);
 	
-	var _selectorFactory = __webpack_require__(/*! ./selectorFactory */ 487);
+	var _selectorFactory = __webpack_require__(/*! ./selectorFactory */ 490);
 	
 	var _selectorFactory2 = _interopRequireDefault(_selectorFactory);
 	
@@ -60317,7 +60564,7 @@
 	exports.default = createConnect();
 
 /***/ },
-/* 461 */
+/* 464 */
 /*!*************************************************!*\
   !*** ./~/react-redux/lib/utils/shallowEqual.js ***!
   \*************************************************/
@@ -60359,7 +60606,7 @@
 	}
 
 /***/ },
-/* 462 */
+/* 465 */
 /*!*********************************************************!*\
   !*** ./~/react-redux/lib/connect/mapDispatchToProps.js ***!
   \*********************************************************/
@@ -60372,9 +60619,9 @@
 	exports.whenMapDispatchToPropsIsMissing = whenMapDispatchToPropsIsMissing;
 	exports.whenMapDispatchToPropsIsObject = whenMapDispatchToPropsIsObject;
 	
-	var _redux = __webpack_require__(/*! redux */ 463);
+	var _redux = __webpack_require__(/*! redux */ 466);
 	
-	var _wrapMapToProps = __webpack_require__(/*! ./wrapMapToProps */ 483);
+	var _wrapMapToProps = __webpack_require__(/*! ./wrapMapToProps */ 486);
 	
 	function whenMapDispatchToPropsIsFunction(mapDispatchToProps) {
 	  return typeof mapDispatchToProps === 'function' ? (0, _wrapMapToProps.wrapMapToPropsFunc)(mapDispatchToProps, 'mapDispatchToProps') : undefined;
@@ -60395,7 +60642,7 @@
 	exports.default = [whenMapDispatchToPropsIsFunction, whenMapDispatchToPropsIsMissing, whenMapDispatchToPropsIsObject];
 
 /***/ },
-/* 463 */
+/* 466 */
 /*!******************************!*\
   !*** ./~/redux/lib/index.js ***!
   \******************************/
@@ -60406,27 +60653,27 @@
 	exports.__esModule = true;
 	exports.compose = exports.applyMiddleware = exports.bindActionCreators = exports.combineReducers = exports.createStore = undefined;
 	
-	var _createStore = __webpack_require__(/*! ./createStore */ 464);
+	var _createStore = __webpack_require__(/*! ./createStore */ 467);
 	
 	var _createStore2 = _interopRequireDefault(_createStore);
 	
-	var _combineReducers = __webpack_require__(/*! ./combineReducers */ 478);
+	var _combineReducers = __webpack_require__(/*! ./combineReducers */ 481);
 	
 	var _combineReducers2 = _interopRequireDefault(_combineReducers);
 	
-	var _bindActionCreators = __webpack_require__(/*! ./bindActionCreators */ 480);
+	var _bindActionCreators = __webpack_require__(/*! ./bindActionCreators */ 483);
 	
 	var _bindActionCreators2 = _interopRequireDefault(_bindActionCreators);
 	
-	var _applyMiddleware = __webpack_require__(/*! ./applyMiddleware */ 481);
+	var _applyMiddleware = __webpack_require__(/*! ./applyMiddleware */ 484);
 	
 	var _applyMiddleware2 = _interopRequireDefault(_applyMiddleware);
 	
-	var _compose = __webpack_require__(/*! ./compose */ 482);
+	var _compose = __webpack_require__(/*! ./compose */ 485);
 	
 	var _compose2 = _interopRequireDefault(_compose);
 	
-	var _warning = __webpack_require__(/*! ./utils/warning */ 479);
+	var _warning = __webpack_require__(/*! ./utils/warning */ 482);
 	
 	var _warning2 = _interopRequireDefault(_warning);
 	
@@ -60450,7 +60697,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../process/browser.js */ 3)))
 
 /***/ },
-/* 464 */
+/* 467 */
 /*!************************************!*\
   !*** ./~/redux/lib/createStore.js ***!
   \************************************/
@@ -60462,11 +60709,11 @@
 	exports.ActionTypes = undefined;
 	exports['default'] = createStore;
 	
-	var _isPlainObject = __webpack_require__(/*! lodash/isPlainObject */ 465);
+	var _isPlainObject = __webpack_require__(/*! lodash/isPlainObject */ 468);
 	
 	var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
 	
-	var _symbolObservable = __webpack_require__(/*! symbol-observable */ 475);
+	var _symbolObservable = __webpack_require__(/*! symbol-observable */ 478);
 	
 	var _symbolObservable2 = _interopRequireDefault(_symbolObservable);
 	
@@ -60719,15 +60966,15 @@
 	}
 
 /***/ },
-/* 465 */
+/* 468 */
 /*!***********************************!*\
   !*** ./~/lodash/isPlainObject.js ***!
   \***********************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseGetTag = __webpack_require__(/*! ./_baseGetTag */ 466),
-	    getPrototype = __webpack_require__(/*! ./_getPrototype */ 472),
-	    isObjectLike = __webpack_require__(/*! ./isObjectLike */ 474);
+	var baseGetTag = __webpack_require__(/*! ./_baseGetTag */ 469),
+	    getPrototype = __webpack_require__(/*! ./_getPrototype */ 475),
+	    isObjectLike = __webpack_require__(/*! ./isObjectLike */ 477);
 	
 	/** `Object#toString` result references. */
 	var objectTag = '[object Object]';
@@ -60790,15 +61037,15 @@
 
 
 /***/ },
-/* 466 */
+/* 469 */
 /*!*********************************!*\
   !*** ./~/lodash/_baseGetTag.js ***!
   \*********************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var Symbol = __webpack_require__(/*! ./_Symbol */ 467),
-	    getRawTag = __webpack_require__(/*! ./_getRawTag */ 470),
-	    objectToString = __webpack_require__(/*! ./_objectToString */ 471);
+	var Symbol = __webpack_require__(/*! ./_Symbol */ 470),
+	    getRawTag = __webpack_require__(/*! ./_getRawTag */ 473),
+	    objectToString = __webpack_require__(/*! ./_objectToString */ 474);
 	
 	/** `Object#toString` result references. */
 	var nullTag = '[object Null]',
@@ -60827,13 +61074,13 @@
 
 
 /***/ },
-/* 467 */
+/* 470 */
 /*!*****************************!*\
   !*** ./~/lodash/_Symbol.js ***!
   \*****************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var root = __webpack_require__(/*! ./_root */ 468);
+	var root = __webpack_require__(/*! ./_root */ 471);
 	
 	/** Built-in value references. */
 	var Symbol = root.Symbol;
@@ -60842,13 +61089,13 @@
 
 
 /***/ },
-/* 468 */
+/* 471 */
 /*!***************************!*\
   !*** ./~/lodash/_root.js ***!
   \***************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var freeGlobal = __webpack_require__(/*! ./_freeGlobal */ 469);
+	var freeGlobal = __webpack_require__(/*! ./_freeGlobal */ 472);
 	
 	/** Detect free variable `self`. */
 	var freeSelf = typeof self == 'object' && self && self.Object === Object && self;
@@ -60860,7 +61107,7 @@
 
 
 /***/ },
-/* 469 */
+/* 472 */
 /*!*********************************!*\
   !*** ./~/lodash/_freeGlobal.js ***!
   \*********************************/
@@ -60874,13 +61121,13 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 470 */
+/* 473 */
 /*!********************************!*\
   !*** ./~/lodash/_getRawTag.js ***!
   \********************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var Symbol = __webpack_require__(/*! ./_Symbol */ 467);
+	var Symbol = __webpack_require__(/*! ./_Symbol */ 470);
 	
 	/** Used for built-in method references. */
 	var objectProto = Object.prototype;
@@ -60929,7 +61176,7 @@
 
 
 /***/ },
-/* 471 */
+/* 474 */
 /*!*************************************!*\
   !*** ./~/lodash/_objectToString.js ***!
   \*************************************/
@@ -60960,13 +61207,13 @@
 
 
 /***/ },
-/* 472 */
+/* 475 */
 /*!***********************************!*\
   !*** ./~/lodash/_getPrototype.js ***!
   \***********************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var overArg = __webpack_require__(/*! ./_overArg */ 473);
+	var overArg = __webpack_require__(/*! ./_overArg */ 476);
 	
 	/** Built-in value references. */
 	var getPrototype = overArg(Object.getPrototypeOf, Object);
@@ -60975,7 +61222,7 @@
 
 
 /***/ },
-/* 473 */
+/* 476 */
 /*!******************************!*\
   !*** ./~/lodash/_overArg.js ***!
   \******************************/
@@ -60999,7 +61246,7 @@
 
 
 /***/ },
-/* 474 */
+/* 477 */
 /*!**********************************!*\
   !*** ./~/lodash/isObjectLike.js ***!
   \**********************************/
@@ -61037,17 +61284,17 @@
 
 
 /***/ },
-/* 475 */
+/* 478 */
 /*!**************************************!*\
   !*** ./~/symbol-observable/index.js ***!
   \**************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(/*! ./lib/index */ 476);
+	module.exports = __webpack_require__(/*! ./lib/index */ 479);
 
 
 /***/ },
-/* 476 */
+/* 479 */
 /*!******************************************!*\
   !*** ./~/symbol-observable/lib/index.js ***!
   \******************************************/
@@ -61059,7 +61306,7 @@
 	  value: true
 	});
 	
-	var _ponyfill = __webpack_require__(/*! ./ponyfill */ 477);
+	var _ponyfill = __webpack_require__(/*! ./ponyfill */ 480);
 	
 	var _ponyfill2 = _interopRequireDefault(_ponyfill);
 	
@@ -61085,7 +61332,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(/*! ./../../webpack/buildin/module.js */ 362)(module)))
 
 /***/ },
-/* 477 */
+/* 480 */
 /*!*********************************************!*\
   !*** ./~/symbol-observable/lib/ponyfill.js ***!
   \*********************************************/
@@ -61116,7 +61363,7 @@
 	};
 
 /***/ },
-/* 478 */
+/* 481 */
 /*!****************************************!*\
   !*** ./~/redux/lib/combineReducers.js ***!
   \****************************************/
@@ -61127,13 +61374,13 @@
 	exports.__esModule = true;
 	exports['default'] = combineReducers;
 	
-	var _createStore = __webpack_require__(/*! ./createStore */ 464);
+	var _createStore = __webpack_require__(/*! ./createStore */ 467);
 	
-	var _isPlainObject = __webpack_require__(/*! lodash/isPlainObject */ 465);
+	var _isPlainObject = __webpack_require__(/*! lodash/isPlainObject */ 468);
 	
 	var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
 	
-	var _warning = __webpack_require__(/*! ./utils/warning */ 479);
+	var _warning = __webpack_require__(/*! ./utils/warning */ 482);
 	
 	var _warning2 = _interopRequireDefault(_warning);
 	
@@ -61267,7 +61514,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../process/browser.js */ 3)))
 
 /***/ },
-/* 479 */
+/* 482 */
 /*!**************************************!*\
   !*** ./~/redux/lib/utils/warning.js ***!
   \**************************************/
@@ -61300,7 +61547,7 @@
 	}
 
 /***/ },
-/* 480 */
+/* 483 */
 /*!*******************************************!*\
   !*** ./~/redux/lib/bindActionCreators.js ***!
   \*******************************************/
@@ -61359,7 +61606,7 @@
 	}
 
 /***/ },
-/* 481 */
+/* 484 */
 /*!****************************************!*\
   !*** ./~/redux/lib/applyMiddleware.js ***!
   \****************************************/
@@ -61373,7 +61620,7 @@
 	
 	exports['default'] = applyMiddleware;
 	
-	var _compose = __webpack_require__(/*! ./compose */ 482);
+	var _compose = __webpack_require__(/*! ./compose */ 485);
 	
 	var _compose2 = _interopRequireDefault(_compose);
 	
@@ -61425,7 +61672,7 @@
 	}
 
 /***/ },
-/* 482 */
+/* 485 */
 /*!********************************!*\
   !*** ./~/redux/lib/compose.js ***!
   \********************************/
@@ -61471,7 +61718,7 @@
 	}
 
 /***/ },
-/* 483 */
+/* 486 */
 /*!*****************************************************!*\
   !*** ./~/react-redux/lib/connect/wrapMapToProps.js ***!
   \*****************************************************/
@@ -61484,7 +61731,7 @@
 	exports.getDependsOnOwnProps = getDependsOnOwnProps;
 	exports.wrapMapToPropsFunc = wrapMapToPropsFunc;
 	
-	var _verifyPlainObject = __webpack_require__(/*! ../utils/verifyPlainObject */ 484);
+	var _verifyPlainObject = __webpack_require__(/*! ../utils/verifyPlainObject */ 487);
 	
 	var _verifyPlainObject2 = _interopRequireDefault(_verifyPlainObject);
 	
@@ -61558,7 +61805,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../process/browser.js */ 3)))
 
 /***/ },
-/* 484 */
+/* 487 */
 /*!******************************************************!*\
   !*** ./~/react-redux/lib/utils/verifyPlainObject.js ***!
   \******************************************************/
@@ -61569,11 +61816,11 @@
 	exports.__esModule = true;
 	exports.default = verifyPlainObject;
 	
-	var _isPlainObject = __webpack_require__(/*! lodash/isPlainObject */ 465);
+	var _isPlainObject = __webpack_require__(/*! lodash/isPlainObject */ 468);
 	
 	var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
 	
-	var _warning = __webpack_require__(/*! ./warning */ 457);
+	var _warning = __webpack_require__(/*! ./warning */ 460);
 	
 	var _warning2 = _interopRequireDefault(_warning);
 	
@@ -61586,7 +61833,7 @@
 	}
 
 /***/ },
-/* 485 */
+/* 488 */
 /*!******************************************************!*\
   !*** ./~/react-redux/lib/connect/mapStateToProps.js ***!
   \******************************************************/
@@ -61598,7 +61845,7 @@
 	exports.whenMapStateToPropsIsFunction = whenMapStateToPropsIsFunction;
 	exports.whenMapStateToPropsIsMissing = whenMapStateToPropsIsMissing;
 	
-	var _wrapMapToProps = __webpack_require__(/*! ./wrapMapToProps */ 483);
+	var _wrapMapToProps = __webpack_require__(/*! ./wrapMapToProps */ 486);
 	
 	function whenMapStateToPropsIsFunction(mapStateToProps) {
 	  return typeof mapStateToProps === 'function' ? (0, _wrapMapToProps.wrapMapToPropsFunc)(mapStateToProps, 'mapStateToProps') : undefined;
@@ -61613,7 +61860,7 @@
 	exports.default = [whenMapStateToPropsIsFunction, whenMapStateToPropsIsMissing];
 
 /***/ },
-/* 486 */
+/* 489 */
 /*!*************************************************!*\
   !*** ./~/react-redux/lib/connect/mergeProps.js ***!
   \*************************************************/
@@ -61630,7 +61877,7 @@
 	exports.whenMergePropsIsFunction = whenMergePropsIsFunction;
 	exports.whenMergePropsIsOmitted = whenMergePropsIsOmitted;
 	
-	var _verifyPlainObject = __webpack_require__(/*! ../utils/verifyPlainObject */ 484);
+	var _verifyPlainObject = __webpack_require__(/*! ../utils/verifyPlainObject */ 487);
 	
 	var _verifyPlainObject2 = _interopRequireDefault(_verifyPlainObject);
 	
@@ -61680,7 +61927,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../process/browser.js */ 3)))
 
 /***/ },
-/* 487 */
+/* 490 */
 /*!******************************************************!*\
   !*** ./~/react-redux/lib/connect/selectorFactory.js ***!
   \******************************************************/
@@ -61693,7 +61940,7 @@
 	exports.pureFinalPropsSelectorFactory = pureFinalPropsSelectorFactory;
 	exports.default = finalPropsSelectorFactory;
 	
-	var _verifySubselectors = __webpack_require__(/*! ./verifySubselectors */ 488);
+	var _verifySubselectors = __webpack_require__(/*! ./verifySubselectors */ 491);
 	
 	var _verifySubselectors2 = _interopRequireDefault(_verifySubselectors);
 	
@@ -61802,7 +62049,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../process/browser.js */ 3)))
 
 /***/ },
-/* 488 */
+/* 491 */
 /*!*********************************************************!*\
   !*** ./~/react-redux/lib/connect/verifySubselectors.js ***!
   \*********************************************************/
@@ -61813,7 +62060,7 @@
 	exports.__esModule = true;
 	exports.default = verifySubselectors;
 	
-	var _warning = __webpack_require__(/*! ../utils/warning */ 457);
+	var _warning = __webpack_require__(/*! ../utils/warning */ 460);
 	
 	var _warning2 = _interopRequireDefault(_warning);
 	
@@ -61836,7 +62083,7 @@
 	}
 
 /***/ },
-/* 489 */
+/* 492 */
 /*!*********************************************************************!*\
   !*** ./components/modules/DistrictOffices/reducers/listReducers.js ***!
   \*********************************************************************/
@@ -61851,7 +62098,7 @@
 	
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 	
-	var _immutable = __webpack_require__(/*! immutable */ 490);
+	var _immutable = __webpack_require__(/*! immutable */ 493);
 	
 	var _lokka = __webpack_require__(/*! lokka */ 237);
 	
@@ -61881,7 +62128,7 @@
 	exports.default = listReducer;
 
 /***/ },
-/* 490 */
+/* 493 */
 /*!***************************************!*\
   !*** ./~/immutable/dist/immutable.js ***!
   \***************************************/
@@ -66868,7 +67115,7 @@
 	}));
 
 /***/ },
-/* 491 */
+/* 494 */
 /*!************************************************************************!*\
   !*** ./components/modules/DistrictOffices/reducers/contactReducers.js ***!
   \************************************************************************/
@@ -66882,7 +67129,7 @@
 	
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 	
-	var _immutable = __webpack_require__(/*! immutable */ 490);
+	var _immutable = __webpack_require__(/*! immutable */ 493);
 	
 	var initialState = {
 	  districtOfficeContact: {
@@ -66908,7 +67155,7 @@
 	exports.default = contactReducer;
 
 /***/ },
-/* 492 */
+/* 495 */
 /*!*********************************************************************!*\
   !*** ./components/modules/DistrictOffices/reducers/caseReducers.js ***!
   \*********************************************************************/
@@ -66923,7 +67170,7 @@
 	
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 	
-	var _immutable = __webpack_require__(/*! immutable */ 490);
+	var _immutable = __webpack_require__(/*! immutable */ 493);
 	
 	var _lokka = __webpack_require__(/*! lokka */ 237);
 	
@@ -66949,7 +67196,7 @@
 	exports.default = caseReducer;
 
 /***/ },
-/* 493 */
+/* 496 */
 /*!***************************************************************************!*\
   !*** ./components/modules/DistrictOffices/reducers/caseOfficesReducer.js ***!
   \***************************************************************************/
@@ -66963,7 +67210,7 @@
 	
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 	
-	var _immutable = __webpack_require__(/*! immutable */ 490);
+	var _immutable = __webpack_require__(/*! immutable */ 493);
 	
 	var _lokka = __webpack_require__(/*! lokka */ 237);
 	
@@ -66986,7 +67233,7 @@
 	exports.default = caseOfficesReducer;
 
 /***/ },
-/* 494 */
+/* 497 */
 /*!***************************************************************!*\
   !*** ./components/modules/DistrictOffices/actions/actions.js ***!
   \***************************************************************/
@@ -66998,11 +67245,11 @@
 	  value: true
 	});
 	
-	var _contactActions = __webpack_require__(/*! ./contactActions */ 495);
+	var _contactActions = __webpack_require__(/*! ./contactActions */ 498);
 	
 	var contactActions = _interopRequireWildcard(_contactActions);
 	
-	var _listActions = __webpack_require__(/*! ./listActions */ 496);
+	var _listActions = __webpack_require__(/*! ./listActions */ 499);
 	
 	var listActions = _interopRequireWildcard(_listActions);
 	
@@ -67013,7 +67260,7 @@
 	exports.default = actions;
 
 /***/ },
-/* 495 */
+/* 498 */
 /*!**********************************************************************!*\
   !*** ./components/modules/DistrictOffices/actions/contactActions.js ***!
   \**********************************************************************/
@@ -67034,7 +67281,7 @@
 	}
 
 /***/ },
-/* 496 */
+/* 499 */
 /*!*******************************************************************!*\
   !*** ./components/modules/DistrictOffices/actions/listActions.js ***!
   \*******************************************************************/
@@ -67063,253 +67310,6 @@
 	    response: response
 	  };
 	}
-
-/***/ },
-/* 497 */
-/*!************************************************************************************!*\
-  !*** ./components/routes/DistrictOffices/components/DistrictOfficeContactView.jsx ***!
-  \************************************************************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _react = __webpack_require__(/*! react */ 1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactRouter = __webpack_require__(/*! react-router */ 180);
-	
-	var _buttonStyles = __webpack_require__(/*! ./buttonStyles.js */ 235);
-	
-	var _buttonStyles2 = _interopRequireDefault(_buttonStyles);
-	
-	var _Group = __webpack_require__(/*! ./Group.jsx */ 498);
-	
-	var _Group2 = _interopRequireDefault(_Group);
-	
-	var _Address = __webpack_require__(/*! ./Address.jsx */ 499);
-	
-	var _Address2 = _interopRequireDefault(_Address);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var DistrictOfficeContactView = function DistrictOfficeContactView(props) {
-	  return _react2.default.createElement(
-	    'div',
-	    { id: 'districtOfficeContactView' },
-	    _react2.default.createElement(
-	      'h2',
-	      null,
-	      'Dane kontaktowe dla: ',
-	      props.name,
-	      _react2.default.createElement('br', null)
-	    ),
-	    _react2.default.createElement(
-	      _Address2.default,
-	      { contactInfo: props.contactInfo },
-	      ' '
-	    ),
-	    _react2.default.createElement(
-	      'ul',
-	      null,
-	      props.groupsInfo
-	    ),
-	    _react2.default.createElement(
-	      _reactRouter.Link,
-	      { to: '/', style: _buttonStyles2.default },
-	      'wr\xF3\u0107'
-	    )
-	  );
-	};
-	
-	exports.default = DistrictOfficeContactView;
-
-/***/ },
-/* 498 */
-/*!****************************************************************!*\
-  !*** ./components/routes/DistrictOffices/components/Group.jsx ***!
-  \****************************************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _react = __webpack_require__(/*! react */ 1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var Group = function Group(props) {
-	  return _react2.default.createElement(
-	    'div',
-	    null,
-	    _react2.default.createElement(
-	      'div',
-	      null,
-	      _react2.default.createElement(
-	        'span',
-	        null,
-	        _react2.default.createElement(
-	          'strong',
-	          null,
-	          'Nazwa grupy:'
-	        )
-	      ),
-	      _react2.default.createElement(
-	        'span',
-	        null,
-	        props.groupName
-	      )
-	    ),
-	    _react2.default.createElement(
-	      'div',
-	      null,
-	      _react2.default.createElement(
-	        'span',
-	        null,
-	        _react2.default.createElement(
-	          'strong',
-	          null,
-	          'Czas obs\u0142ugi:'
-	        )
-	      ),
-	      _react2.default.createElement(
-	        'span',
-	        null,
-	        props.time
-	      )
-	    ),
-	    _react2.default.createElement(
-	      'div',
-	      null,
-	      _react2.default.createElement(
-	        'span',
-	        null,
-	        _react2.default.createElement(
-	          'strong',
-	          null,
-	          'Liczba Czynnych Stanowisk:'
-	        )
-	      ),
-	      _react2.default.createElement(
-	        'span',
-	        null,
-	        props.count
-	      )
-	    ),
-	    _react2.default.createElement(
-	      'div',
-	      null,
-	      _react2.default.createElement(
-	        'span',
-	        null,
-	        _react2.default.createElement(
-	          'strong',
-	          null,
-	          'Liczba os\xF3b w kolejce:'
-	        )
-	      ),
-	      _react2.default.createElement(
-	        'span',
-	        null,
-	        props.count
-	      )
-	    ),
-	    _react2.default.createElement('br', null)
-	  );
-	};
-	
-	exports.default = Group;
-
-/***/ },
-/* 499 */
-/*!******************************************************************!*\
-  !*** ./components/routes/DistrictOffices/components/Address.jsx ***!
-  \******************************************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _react = __webpack_require__(/*! react */ 1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var Address = function Address(props) {
-	  return _react2.default.createElement(
-	    'div',
-	    null,
-	    _react2.default.createElement(
-	      'div',
-	      null,
-	      _react2.default.createElement(
-	        'span',
-	        null,
-	        _react2.default.createElement(
-	          'strong',
-	          null,
-	          'Adres: '
-	        )
-	      ),
-	      _react2.default.createElement(
-	        'span',
-	        null,
-	        props.contactInfo.address
-	      )
-	    ),
-	    _react2.default.createElement(
-	      'div',
-	      null,
-	      _react2.default.createElement(
-	        'span',
-	        null,
-	        _react2.default.createElement(
-	          'strong',
-	          null,
-	          'Telefon: '
-	        )
-	      ),
-	      _react2.default.createElement(
-	        'span',
-	        null,
-	        props.contactInfo.phone
-	      )
-	    ),
-	    _react2.default.createElement(
-	      'div',
-	      null,
-	      _react2.default.createElement(
-	        'span',
-	        null,
-	        _react2.default.createElement(
-	          'strong',
-	          null,
-	          'Email: '
-	        )
-	      ),
-	      _react2.default.createElement(
-	        'span',
-	        null,
-	        props.contactInfo.email
-	      )
-	    )
-	  );
-	};
-	
-	exports.default = Address;
 
 /***/ }
 /******/ ]);

@@ -22,4 +22,26 @@ it('ma 1 okienko dla Urzędu Wola dla case id: drivingLicense', (done) => {
       done();
     });
   });
+
+  it('ma 1 okienko dla Urzędu Bielany dla case id: identityCard', (done) => {
+      const idUrzedu = '9c3d5770-57d8-4365-994c-69c5ac4186ee';
+      const idSprawy = 'identityCard';
+      console.log('Start testu spraw');
+
+      ListaOkienekUseCase.getGroupList(idUrzedu, idSprawy, result => {
+        expect(result.length).toBe(1);
+        done();
+      });
+    });
+    it('ma 1 okienko dla Urzędu Bielany dla case id: identityCard', (done) => {
+        const idUrzedu = '9c3d5770-57d8-4365-994c-69c5ac4186ee';
+        const idSprawy = 'income500+';
+        console.log('Start testu spraw');
+
+        ListaOkienekUseCase.getGroupList(idUrzedu, idSprawy, result => {
+          expect(result.length).toBe(1);
+          done();
+        });
+      });
+
 });
