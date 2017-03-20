@@ -13,6 +13,7 @@ const App = (props) => {
           "line-height": "90px"
         }}>Stacz kolejkowy</h1>
       <Link to="cases" style={buttonStyles}>Załatw sprawę</Link>
+      <a href="StaczKolejkowy_v2.apk" style={buttonStyles}>Pobierz aplikację dla Android</a>
         <div style={{
           "display": "inline",
           "overflow": "hidden"

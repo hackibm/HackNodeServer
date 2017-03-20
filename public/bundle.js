@@ -27526,6 +27526,7 @@
 	  "font-size": "22px",
 	  "background": "#89aaff",
 	  "padding": "10px 20px 10px 20px",
+	  "margin": "5px",
 	  "-webkit-box-shadow": "10px 10px 10px -8px rgba(0,0,0,0.75)",
 	  "-moz-box-shadow": "10px 10px 10px -8px rgba(0,0,0,0.75)",
 	  "box-shadow": "10px 10px 10px -8px rgba(0,0,0,0.75)"
@@ -59819,6 +59820,11 @@
 	      _reactRouter.Link,
 	      { to: 'cases', style: _buttonStyles2.default },
 	      'Za\u0142atw spraw\u0119'
+	    ),
+	    _react2.default.createElement(
+	      'a',
+	      { href: 'StaczKolejkowy_v2.apk', style: _buttonStyles2.default },
+	      'Pobierz aplikacj\u0119 dla Android'
 	    ),
 	    _react2.default.createElement(
 	      'div',

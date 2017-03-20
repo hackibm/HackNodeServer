@@ -9,6 +9,7 @@ const buttonStyles = {
   "font-size": "22px",
   "background": "#89aaff",
   "padding": "10px 20px 10px 20px",
+  "margin":"5px",
   "-webkit-box-shadow": "10px 10px 10px -8px rgba(0,0,0,0.75)",
   "-moz-box-shadow": "10px 10px 10px -8px rgba(0,0,0,0.75)",
   "box-shadow": "10px 10px 10px -8px rgba(0,0,0,0.75)"
