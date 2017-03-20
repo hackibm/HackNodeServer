@@ -3,6 +3,7 @@ import DistrictOffice from './../components/DistrictOffice.jsx';
 import DistrictOfficesListView from './../components/DistrictOfficesListView.jsx';
 import { Lokka } from 'lokka';
 import { Transport } from 'lokka-transport-http';
+import { SERVER_URL } from './serverConstants';
 
 
 class DistrictOfficesList extends React.Component {
@@ -17,7 +18,7 @@ class DistrictOfficesList extends React.Component {
   }
 
   fetchOffices() {
-    const client = new Lokka({ transport: new Transport('http://localhost:6003/graphql') });
+    const client = new Lokka({ transport: new Transport(SERVER_URL) });
 
     client.query(`
       {

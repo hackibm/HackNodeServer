@@ -4,6 +4,7 @@ import { Lokka } from 'lokka';
 import { Transport } from 'lokka-transport-http';
 import DistrictOfficeContactView from './../components/DistrictOfficeContactView.jsx';
 import Group from './../components/Group.jsx';
+import { SERVER_URL } from './serverConstants';
 
 export default class DistrictOfficeContact extends React.Component {
   static propTypes = {
@@ -19,7 +20,7 @@ export default class DistrictOfficeContact extends React.Component {
   }
 
   fetchContacts(id) {
-    const client = new Lokka({ transport: new Transport('http://localhost:6003/graphql') });
+    const client = new Lokka({ transport: new Transport(SERVER_URL) });
 
     client.query(`{
         offices(id :"${id}"){
